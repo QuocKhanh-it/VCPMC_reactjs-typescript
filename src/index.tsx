@@ -16,10 +16,6 @@ ReactDOM.render(
         theme={{
           token: {
             colorPrimary: "#FF7506",
-            
-            fontFamily: "Montserrat",
-
-            
           },
         }}
       >

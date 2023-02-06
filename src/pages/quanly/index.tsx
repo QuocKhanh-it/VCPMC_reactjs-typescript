@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Layout } from "antd";
 import SiderMenu from "../../components/common/Menu/SiderMenu";
 import LayoutHeader from "../../layout/Header/LayoutHeader";
-import HomeContent from "../../layout/HomeContent/HomeContent";
+import ContentPageQLy from "../../layout/ContentPageQLy";
+
 
 const { Header, Footer, Content } = Layout;
 
-const HomePage = () => {
+const QuanLyPage = () => {
   return (
     <div className="MainApp">
       <Layout>
@@ -14,7 +15,7 @@ const HomePage = () => {
         <Layout>
           <LayoutHeader />
           <Content>
-            <HomeContent />
+              <ContentPageQLy/>
           </Content>
         </Layout>
    
@@ -24,4 +25,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default QuanLyPage;

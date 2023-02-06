@@ -32,7 +32,63 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.MainApp {
+  width: 1920px;
+  height: 1080px;
+  background-color: #1E1E2E;
+}
+
+.Content-App {
+  margin-left: 38px;
+  color: white;
+}
+
+header.ant-layout-header,
+main.ant-layout-content {
+  background: #1E1E2E !important;
+  background-color: #1E1E2E;
+  margin: 0;
+}
+
+.btn-default {
+  width: 168px;
+  height: 48px;
+  border-radius: 8px;
+  margin: 16px;
+}
+
+.ant-message-notice-content {
+  position: absolute;
+  width: 351px;
+  height: 76px;
+  background-color: #727288 !important;
+  border-radius: 12px;
+  color: white;
+  z-index: 1;
+  top :70vh ;
+  right: 850px;
+
+}
+
+.ant-message-custom-content.ant-message-success {
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+span.anticon.anticon-check-circle {
+  font-size: 32px !important;
 }

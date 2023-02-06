@@ -1,8 +1,4 @@
-.MainApp {
-  width: 1920px;
-  height: 1080px;
-  background-color: #1e1e2e;
-}
+
 .header {
   display: flex;
   justify-content: flex-end;
@@ -11,14 +7,7 @@
     margin-right: 80px;
   }
 }
-.item_select {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .it_title {
-    margin-right: 8px;
-  }
-}
+
 .Form_login {
   display: flex;
   flex-direction: column;

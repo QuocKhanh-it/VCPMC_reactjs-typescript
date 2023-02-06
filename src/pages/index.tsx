@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import { IParams } from "../types";
 import FormResetPassword from "../components/authentication/formResetPass";
 import LinkPageError from "../components/authentication/linkPageErorr";
+import SelectLangguage from "../components/Header/selectlanguage";
+
 
 const AuthentiCationPage = () => {
   const  { page } : IParams = useParams();
@@ -16,24 +18,7 @@ const AuthentiCationPage = () => {
     <div className="MainApp">
       <div className="header">
         <div className="header-selectLanguage">
-          <Select
-            defaultValue={`Tiếng Việt`}
-            style={{ width: 145 }}
-            // onChange={handleChange}
-            options={[
-              {
-                value: "Tiếng Việt",
-                label: (
-                  <>
-                    <div className="item_select">
-                     <span className="it_title">Tiếng Việt</span> 
-                      <Avatar size="small" icon={<img src={VietNam} />} />
-                    </div>
-                  </>
-                ),
-              },
-            ]}
-          />
+            <SelectLangguage/>
         </div>
       </div>
       <div className="Form_login">

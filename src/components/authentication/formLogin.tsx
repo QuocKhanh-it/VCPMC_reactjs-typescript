@@ -44,6 +44,7 @@ const FormLogin = () => {
 
         <Form.Item>
           <div className="btn-group">
+            <Link to={`/home`}>
             <Button
               type="primary"
               htmlType="submit"
@@ -51,6 +52,7 @@ const FormLogin = () => {
             >
               Đăng nhập
             </Button>
+            </Link>
           </div>
         </Form.Item>
         <div className="btn-group">
