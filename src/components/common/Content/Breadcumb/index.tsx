@@ -4,11 +4,12 @@ import { Breadcrumb } from "antd";
 import { useHistory, useParams } from "react-router-dom";
 import { IParams } from "../../../../types";
 import { breadlink } from "./breadcumblink";
+import "./styles.scss"
 
 const BreadCumbLink = () => {
   const history = useHistory();
   const pathName = history.location.pathname;
-  const { page, control, id }: IParams = useParams();
+  const { page, control,tag, id }: IParams = useParams();
 
   // if(page){
   //   const Breadpage = breadlink.filter((item) => {
@@ -24,7 +25,11 @@ const BreadCumbLink = () => {
 
   const Showbread =
     breadcumbItem.length > 1 &&
-    breadcumbItem.map((item, key) => {
+    breadcumbItem.length >3 ? 
+    breadcumbItem.slice(-3).map((item, key) => {
+      return <Breadcrumb.Item key={key}>{item.name}</Breadcrumb.Item>;
+    })
+    :breadcumbItem.map((item, key) => {
       return <Breadcrumb.Item key={key}>{item.name}</Breadcrumb.Item>;
     });
 

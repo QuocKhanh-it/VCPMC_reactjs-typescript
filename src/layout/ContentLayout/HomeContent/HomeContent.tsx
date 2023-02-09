@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Avatar, Form, Input, DatePicker, Button, } from "antd";
 import dayjs from "dayjs";
 
-import ModalChangePassword from "../../components/modal/modalchangepassword";
+import ModalChangePassword from "../../../components/modal/modalchangepassword";
 import "./styles.scss";
-import HomePageAction from "../../components/actionpages/homepageaction";
-import ContentTitle from "../../components/common/Content/contentTitle";
+import HomePageAction from "../../../components/actionpages/homepageaction";
+import ContentTitle from "../../../components/common/Content/contentTitle";
 const dateFormat = "DD/MM/YYYY";
 
 
@@ -29,12 +29,12 @@ const HomeContent = () => {
           <div className="Content-body_avatar">
             <Avatar
               size={240}
-              icon={<img src={require("../../assets/image/Frame433.png")} />}
+              icon={<img src={require("../../../assets/image/Frame433.png")} />}
             />
             <Avatar
               className="Icon-Camera"
               size={40}
-              icon={<img src={require("../../assets/image/Cameraicon.png")} />}
+              icon={<img src={require("../../../assets/image/Cameraicon.png")} />}
             />
           </div>
           <div className="Content-body_nameuser">

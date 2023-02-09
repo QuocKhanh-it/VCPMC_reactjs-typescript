@@ -4,7 +4,9 @@
 export interface IParams {
     page?: string
     control?: string
+    tag?: string
     id?: string
+    action? : string
   }
 
   export interface IProfile {
@@ -16,4 +18,8 @@ export interface IParams {
     role: string
     username: string
     avatar: string
+  }
+  export interface ISelect {
+    title?: string 
+    data? : Array<{value: string, label: string}>
   }

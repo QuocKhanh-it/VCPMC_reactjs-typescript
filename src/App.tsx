@@ -12,7 +12,9 @@ function App() {
                     <Route path="/" component={PageRender} exact />
                     <Route path="/:page" component={PageRender} exact />
                     <Route path="/:page/:control" component={PageRender} exact />
-                    <Route path="/:page/:control/:id" component={PageRender} exact />
+                    <Route path="/:page/:control/:tag" component={PageRender} exact />
+                    <Route path="/:page/:control/:tag/:id" component={PageRender} exact />
+                    <Route path="/:page/:control/:tag/:id/:action" component={PageRender} exact />
                 </Switch>
             </BrowserRouter>
         </>
