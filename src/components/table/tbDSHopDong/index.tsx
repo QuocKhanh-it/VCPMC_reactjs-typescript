@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState } from "react";
 import { Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import "./styles.scss";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import ModalActionHuyHD from "../../modal/modalActionhuy";
+import ModalLyDoHuyHD from "../../modal/modalLyDoHuyHD";
 
 interface DataType {
   key: number;
@@ -14,9 +16,11 @@ interface DataType {
   quyenSH: string;
   hieuLuc: number;
   ngayTao: string;
+  lydoHuy: string;
 }
 
-const TableDSHopDong = () => {
+const TableDSHopDong :React.FC<{handleOpenMDLDH : Function}> = (props) => {
+
   const history = useHistory();
   const pathname = history.location.pathname;
   const columns: ColumnsType<DataType> = [
@@ -98,11 +102,15 @@ const TableDSHopDong = () => {
     },
     {
       key: "actionHuy",
-      render: (_, { hieuLuc }) => (
+      render: (_, { hieuLuc , soHD , lydoHuy}) => (
         <>
           {hieuLuc === 0 ? (
-            <Space size="middle">
-              <a>Lý do hủy</a>
+            <Space size="middle"onClick={()=>handleOpenMD({soHD, lydoHuy})} >
+              <div>
+              <a 
+              >Lý do hủy</a>
+              </div>
+             
             </Space>
           ) : (
             ""
@@ -112,6 +120,10 @@ const TableDSHopDong = () => {
     },
   ];
 
+  const handleOpenMD =(Value: object) =>{
+  props.handleOpenMDLDH(Value)
+
+  }
   const data: DataType[] = [];
   for (let i = 1; i < 50; i++) {
     data.push({
@@ -122,6 +134,7 @@ const TableDSHopDong = () => {
       quyenSH: "Người biểu diễn",
       hieuLuc: i > 3 ? 0 : i,
       ngayTao: " 01/04/2021 15:53:13",
+      lydoHuy: i > 3 ? "Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn." : ""
     });
   }
   return (
@@ -131,6 +144,7 @@ const TableDSHopDong = () => {
         dataSource={data}
         pagination={{ pageSize: 13 }}
       />
+  
     </div>
   );
 };

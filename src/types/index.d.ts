@@ -21,5 +21,6 @@ export interface IParams {
   }
   export interface ISelect {
     title?: string 
+    w? : number
     data? : Array<{value: string, label: string}>
   }

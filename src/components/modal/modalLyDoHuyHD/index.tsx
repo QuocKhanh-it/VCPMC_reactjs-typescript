@@ -2,54 +2,50 @@ import React, { useState } from "react";
 import { Button, Modal, Form, Input, message } from "antd";
 import "./styles.scss";
 
-const ModalActionHuyHD: React.FC<{
+const ModalLyDoHuyHD: React.FC<{
   isOpenModal: boolean;
   isCancel: Function;
+  Value : {soHD: string; lydoHuy: string};
+
 }> = (props) => {
   const {TextArea } = Input
   const handleCancel = () => {
     props.isCancel(false);
   };
 
-  const handelChangePassword = () => {
-    handleCancel();
-    
-  };
 
   return (
     <>
       
-      <Modal open={props.isOpenModal} onCancel={handleCancel} footer={false} className ="ModalHuyHDActions">
+      <Modal open={props.isOpenModal}
+       onCancel={handleCancel} 
+       footer={false} className ="ModalLyDoHuyHD">
         <div className="Modal_Title">
-          <h3> Hủy hợp đồng uỷ quyền</h3>
+          <h3>{`Lý do hủy hợp đồng uỷ quyền ${props.Value.soHD}`}</h3>
         </div>
         <Form layout="vertical" className="Form_ChangePassword">
           <Form.Item
             label=""
             name="ly_do"
-            // initialValue={"Trinh@123"}
+            initialValue={props.Value.lydoHuy}
           >
-          <TextArea  placeholder="Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này..." rows={8}/>
+          <TextArea  
+          placeholder="Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này..." 
+          rows={8}
+         
+          />
           </Form.Item>
         
           <Form.Item>
             <div className="btn-group">
-              <Button
-                type="primary"
-                danger
-                ghost
-                className="btn-default"
-                onClick={handleCancel}
-              >
-                Quay lại
-              </Button>
+             
               <Button
                 type="primary"
                 htmlType="submit"
                 className="btn-submit btn-default"
-                // onClick={handelChangePassword}
+                onClick={handleCancel}
               >
-               Huỷ hợp đồng
+                Đóng
               </Button>
             </div>
           </Form.Item>
@@ -59,4 +55,4 @@ const ModalActionHuyHD: React.FC<{
   );
 };
 
-export default ModalActionHuyHD;
+export default ModalLyDoHuyHD;

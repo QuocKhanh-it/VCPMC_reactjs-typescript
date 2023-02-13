@@ -32,17 +32,21 @@
     letter-spacing: -0.002em;
     width: 250px;
   }
-}
-.FileItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 28px;
-  margin-top: 8px;
-  span {
-    margin-left: 8px;
+
+  &_Form-Files{
+    .FileItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 28px;
+      margin-top: 8px;
+      span {
+        margin-left: 8px;
+      }
+    }
   }
 }
+
 .Form_InfoHD {
 }
 .ant-form-item {

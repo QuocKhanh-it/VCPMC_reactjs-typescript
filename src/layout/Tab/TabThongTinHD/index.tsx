@@ -1,18 +1,63 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Form, Input } from "antd";
 import React, { useState } from "react";
-import ChitietHDActionsPage from "../../../components/actionpages/chitietHDActionsPage";
-import ModalActionHuyHD from "../../../components/modal/modalActionhuyHD";
+import ActionsPages from "../../../components/actionpages/ActionPages";
+import ModalActionHuy from "../../../components/modal/modalActionhuy";
+import ModalGiaHanHD from "../../../components/modal/modalGiaHanHD";
 import "./styles.scss";
-const TabThongTinHD = () => {
-  const [openActionHuyHD, setOpenChangePass] = useState(false);
 
-  const handelModalHuyOpen = (open: boolean) => {
-    setOpenChangePass(open);
+const TabThongTinHD = () => {
+  const [openActionHuyHD, setActionHuyHD] = useState(false);
+  const [openActionGHHD, setOpenModalGiaHan] = useState(false);
+  
+  const handelModalHuyOpen = () => {
+    setActionHuyHD(true);
   };
-  const handelCancelModal = (cancel: boolean) => {
-    setOpenChangePass(cancel);
+  const handelCancelModal = () => {
+    setActionHuyHD(false);
   };
+  const handelOpenModalGH = () => {
+    setOpenModalGiaHan(true);
+  };
+  const handelCancelModalGH = () => {
+    setOpenModalGiaHan(false);
+  };
+
+
+  const actionsChiTiet = [
+    {
+      linkIcon: (
+        <img
+        src={require("../../../assets/image/action-icon/fi_edit.png")}
+        width={32}
+      />
+      ),
+      title: "Chỉnh sửa hợp đồng ",
+       onClickItem: ()=>{}
+    },
+    {
+      linkIcon: (
+        <img
+        src={require("../../../assets/image/action-icon/notes.png")}
+        width={32}
+      />
+      ),
+      title: "Gia hạn hợp đồng ",
+      onClickItem: handelOpenModalGH,
+    },
+    {
+      linkIcon: (
+        <img
+        src={require("../../../assets/image/action-icon/fi_x.png")}
+        width={32}
+      />
+      ),
+      title: "Hủy hợp đồng ",
+      onClickItem: handelModalHuyOpen,
+    },
+    
+  ];
+
   return (
     <div className="TabThongTinHD">
       <div className="TabThongTinHD_FormTob">
@@ -203,8 +248,24 @@ const TabThongTinHD = () => {
           </Form>
         </div>
       </div>
-      <ChitietHDActionsPage setOpenActionHuyHD={handelModalHuyOpen}/>
-      <ModalActionHuyHD isCancel={handelCancelModal} isOpenModal={openActionHuyHD}/>
+
+      <ActionsPages dataRender={actionsChiTiet} />
+      {/* <ChitietHDActionsPage
+        setOpenActionHuyHD={handelModalHuyOpen}
+        setOpenModalGiaHan={handelOpenModalGH}
+      /> */}
+      <ModalActionHuy
+        title={` Hủy hợp đồng uỷ quyền`}
+        holder={`Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này...`}
+        txtBtnCancel={" Quay lại"}
+        txtBtnSubmit={" Huỷ hợp đồng"}
+        isCancel={handelCancelModal}
+        isOpenModal={openActionHuyHD}
+      />
+      <ModalGiaHanHD
+        isOpenModal={openActionGHHD}
+        isCancel={handelCancelModalGH}
+      />
     </div>
   );
 };

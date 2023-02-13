@@ -6,13 +6,13 @@ import ContentPageQLy from "../../layout/ContentLayout/ContentPageQLy";
 import { IParams } from "../../types";
 import { useParams } from "react-router-dom";
 import ContentChiTietHD from "../../layout/ContentLayout/ContentChiTietHP";
+import ContentCreateHD from "../../layout/ContentLayout/ContentCreateHD";
+import ContentCreateHDKT from "../../layout/ContentLayout/ContentCreateHDKT";
 
-
-const {Content } = Layout;
+const { Content } = Layout;
 
 const QuanLyPage = () => {
-  const {page, control, tag , id} : IParams = useParams()
-
+  const { page, control, tag, id }: IParams = useParams();
 
   return (
     <div className="MainApp">
@@ -21,15 +21,18 @@ const QuanLyPage = () => {
         <Layout>
           <LayoutHeader />
           <Content>
-            {
-              tag=== "chitiethd" ? <ContentChiTietHD/> :<ContentPageQLy/>
-            }
-              
+            {tag === "chitiethd" ? (
+              <ContentChiTietHD />
+            ) : tag === "createhd" ? (
+              <ContentCreateHD />
+            ) : tag === "create_hdkt" ? (
+              <ContentCreateHDKT />
+            ) : (
+              <ContentPageQLy />
+            )}
           </Content>
         </Layout>
-   
       </Layout>
-      
     </div>
   );
 };

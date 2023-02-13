@@ -27,6 +27,7 @@ const BreadCumbLink = () => {
     breadcumbItem.length > 1 &&
     breadcumbItem.length >3 ? 
     breadcumbItem.slice(-3).map((item, key) => {
+      console.log(breadcumbItem)
       return <Breadcrumb.Item key={key}>{item.name}</Breadcrumb.Item>;
     })
     :breadcumbItem.map((item, key) => {

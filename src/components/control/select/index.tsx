@@ -6,12 +6,15 @@ import './styles.scss'
 const CtrSelect : React.FC<ISelect> = (props) => {
   return (
     <div className="Control-Select">
-    <div className="Label-Select">
+      {props.title ? 
+        <div className="Label-Select">
         <h4>{props.title}</h4>
-    </div>
+    </div> :""
+    }
+  
     <Select
       defaultValue="Tất cả"
-      style={{ width: 160, height: 40 }}
+      style={{ width:  props.w ? props.w : 160 , height: 40 }}
       suffixIcon = {<img src={require('../../../assets/image/Vector.png')}/>}
       //   onChange={handleChange}
       options={props.data?.map((item)=>({ label: item.label, value: item.value }))}

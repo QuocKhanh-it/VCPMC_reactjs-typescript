@@ -61,6 +61,12 @@ main.ant-layout-content {
   height: 48px;
   border-radius: 8px;
   margin: 16px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
 }
 
 .ant-message-notice-content {
@@ -71,7 +77,7 @@ main.ant-layout-content {
   border-radius: 12px;
   color: white;
   z-index: 1;
-  top :70vh ;
+  top: 70vh;
   right: 850px;
 
 }

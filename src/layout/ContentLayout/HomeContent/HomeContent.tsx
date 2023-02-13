@@ -4,20 +4,52 @@ import dayjs from "dayjs";
 
 import ModalChangePassword from "../../../components/modal/modalchangepassword";
 import "./styles.scss";
-import HomePageAction from "../../../components/actionpages/homepageaction";
 import ContentTitle from "../../../components/common/Content/contentTitle";
+import ActionsPages from "../../../components/actionpages/ActionPages";
 const dateFormat = "DD/MM/YYYY";
 
 
 const HomeContent = () => {
   const [openChangePw, setOpenChangePass] = useState(false);
 
-  const handelModalOpen = (open: boolean) => {
-    setOpenChangePass(open);
+  const handelModalOpen = () => {
+    setOpenChangePass(true);
   };
-  const handelCancelModal = (cancel: boolean) => {
-    setOpenChangePass(cancel);
+  const handelCancelModal = () => {
+    setOpenChangePass(false);
   };
+
+
+
+  
+  const actionsHomePage = [
+    {
+      linkIcon: (
+        <img src={require('../../../assets/image/action-icon/fi_edit.png')} width={32}/>
+
+      ),
+      title: "Sửa thông tin",
+      onClickItem:()=>{}
+    },
+    {
+      linkIcon: (
+        <img src={require('../../../assets/image/action-icon/fi_lock.png')} width={32}/>
+
+      ),
+      title: "Đổi mật khẩu",
+      onClickItem: handelModalOpen
+    },
+    {
+      linkIcon: (
+        <img src={require('../../../assets/image/action-icon/fi_log-out.png')} width={32}/>
+
+      ),
+      title: "Đăng xuất",
+      onClickItem: ()=>{}
+    },
+  
+  ];
+
 
 
   return (
@@ -110,7 +142,10 @@ const HomeContent = () => {
           </div>
         </div>
 
-        <HomePageAction setOpenModal={handelModalOpen} />
+
+        <ActionsPages dataRender={actionsHomePage}/>
+
+        {/* <HomePageAction setOpenModal={handelModalOpen} /> */}
       </div>
 
       <ModalChangePassword
