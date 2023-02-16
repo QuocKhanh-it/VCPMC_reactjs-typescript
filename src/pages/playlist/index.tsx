@@ -9,10 +9,11 @@ import ContentChiTietHD from "../../layout/ContentLayout/ContentChiTietHD";
 import ContentCreateHD from "../../layout/ContentLayout/ContentCreateHD";
 import ContentCreateHDKT from "../../layout/ContentLayout/ContentCreateHDKT";
 import ContentChiTietHDKT from "../../layout/ContentLayout/ContentChiTietHDKT";
+import ContentPagePlayList from "../../layout/ContentLayout/ContentPagePlayList";
 
 const { Content } = Layout;
 
-const QuanLyPage = () => {
+const PlayListPage = () => {
   const { page, control, tag, id }: IParams = useParams();
 
   return (
@@ -22,20 +23,7 @@ const QuanLyPage = () => {
         <Layout>
           <LayoutHeader />
           <Content>
-     
-            {tag === "chitiethd" ? (
-              <ContentChiTietHD />
-
-            ) :tag === "chitiet_hdkt" ? (
-              <ContentChiTietHDKT />
-              
-            ): tag === "createhd" ? (
-              <ContentCreateHD />
-            ) : tag === "create_hdkt" ? (
-              <ContentCreateHDKT />
-            ) : (
-              <ContentPageQLy />
-            )}
+              <ContentPagePlayList/>
           </Content>
         </Layout>
       </Layout>
@@ -43,4 +31,4 @@ const QuanLyPage = () => {
   );
 };
 
-export default QuanLyPage;
+export default PlayListPage;

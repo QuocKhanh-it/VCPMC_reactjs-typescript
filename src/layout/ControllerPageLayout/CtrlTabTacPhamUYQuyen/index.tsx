@@ -21,7 +21,7 @@ const CtrlTabTacPhamUYQuyen = () => {
       </div>
       
       <div className="Control-TabTacPhamUYQuyen_Search">
-        <SearchComponent  testHint={"Tên hợp đồng, số hợp đồng, người uỷ quyền..."} width ={500} />
+        <SearchComponent  textHint={"Tên hợp đồng, số hợp đồng, người uỷ quyền..."} width ={500} />
       </div>
     </div>
   );

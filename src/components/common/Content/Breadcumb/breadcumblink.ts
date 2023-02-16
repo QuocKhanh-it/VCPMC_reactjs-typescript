@@ -31,4 +31,19 @@ export const breadlink =[
         path: "create_hdkt",
         name: "Thêm hợp đồng mới"
     },
+    {
+      
+        path: "khobanghi",
+        name: "Kho bản ghi"
+    },
+    {
+      
+        path: "pheduyet",
+        name: "Quản lý phê duyệt"
+    },
+    {
+      
+        path: "capnhatbg",
+        name: "Cập nhật thông tin"
+    },
 ]

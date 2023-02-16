@@ -9,7 +9,7 @@ const CtrlQLHDKhaiThac = () => {
   return (
     <div className="Control-QLHDKhaiThac">
      <div className="Control-QLHDKhaiThac_Search">
-        <SearchComponent  testHint={"Tên hợp đồng, tác giả,..."} width ={500} />
+        <SearchComponent  textHint={"Tên hợp đồng, tác giả,..."} width ={500} />
       </div>
     </div>
   );

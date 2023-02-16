@@ -24,3 +24,27 @@ export interface IParams {
     w? : number
     data? : Array<{value: string, label: string}>
   }
+
+  interface DataTypeKhobG {
+    key: number;
+    tenBG: string;
+    maISRC: string;
+    thoiLuong: string;
+    casi: string;
+    tacgia: string;
+    theLoai: string;
+    dinhDang: string;
+    hieuLuc: number;
+    ngayHetHan: string;
+    soHD: string
+  }
+  interface DataTypePlayList {
+    key: number;
+    title: string;
+    soBG: string;
+    thoiLuong: string;
+    chuDe: Array<string>;
+    ngayTao: string;
+    nguoiTao: string;
+
+  }

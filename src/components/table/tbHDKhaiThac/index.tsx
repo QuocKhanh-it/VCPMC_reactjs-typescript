@@ -98,7 +98,7 @@ const TableHDKhaiThac = () => {
       key: "actionCT",
       render: (_, record) => (
         <Space size="middle">
-          <Link to={`${pathname}/chitiethdKhaiThac/${record.key}_${record.soHD}`}>
+          <Link to={`${pathname}/chitiet_hdkt/${record.key}_${record.soHD}`}>
             Xem Chi tiết
           </Link>
         </Space>

@@ -33,7 +33,7 @@ const items: MenuItem[] = [
         <span>Kho bản ghi</span>
       </div>
     </>,
-    "/khobanghi"
+    "/khobanghi/list"
   ),
   //play list
   getItem(
