@@ -18,7 +18,7 @@ const ContentPagePlayList = () => {
         />
       ),
       title: "Thêm Playlist",
-      onClickItem: ()=>{},
+      onClickItem: () => {},
     },
   ];
 
@@ -27,9 +27,9 @@ const ContentPagePlayList = () => {
       <ContentTitle title="Playlist" />
       <div className="Content-body">
         <div className="Content-body_PlaylistPage">
-         <CtrPlayList/>
+          <CtrPlayList />
           <TablePlayLits />
-          <ActionsPages dataRender={actionsPagePlayList}/>
+          <ActionsPages dataRender={actionsPagePlayList} />
         </div>
       </div>
     </div>

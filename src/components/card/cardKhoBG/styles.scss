@@ -7,8 +7,8 @@
   overflow: hidden;
   height: 700px;
   &_Item {
-    width: 342px;
-    height: 330px;
+    width: 342px !important;
+    height: 330px !important;
     border-radius: 8px;
     margin-right: 58px;
     margin-bottom: 30px;
@@ -45,7 +45,7 @@
       }
       &_Info {
         .ant-form-item {
-          margin-bottom: 0;
+          margin-bottom: 0 !important;
           height: 18px;
           margin-left: 16px;
         }

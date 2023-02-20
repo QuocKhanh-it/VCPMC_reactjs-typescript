@@ -1,13 +1,29 @@
+import { Space } from "antd";
+import { ColumnsType } from "antd/es/table";
 import React, { MouseEventHandler, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import ActionsPages from "../../../components/actionpages/ActionPages";
 import TabTacPhamEFooter from "../../../components/footer/tabTacPhamEditFooter";
 import ModalActionHuy from "../../../components/modal/modalActionhuy";
 import ModalActionThemBanGhi from "../../../components/modal/modalThemBanGhi";
-import TableTabTPUyQuyen from "../../../components/table/tbTPUyQuyen";
+import TableSelection from "../../../components/table/tbSelecttions";
 import { IParams } from "../../../types";
 import CtrlTabTacPhamUYQuyen from "../../ControllerPageLayout/CtrlTabTacPhamUYQuyen";
 import "./styles.scss";
+
+
+interface DataType {
+  key: number;
+  nameBG: string;
+  phongcachBG: string;
+  typeBG: string;
+  timeBG: string;
+  ISRC: string;
+  casi: string;
+  tacgia: string;
+  ngayTai: string;
+  status: number;
+}
 const TabTPUyQuyen = () => {
   const [openEdit, SetOpenEdit] = useState(false);
   const [openModalTCBG, SetOpenModalTCBG] = useState(false);
@@ -105,7 +121,140 @@ const handleOpenThemBG = () =>{
     },
   ];
 
+// Table
+const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
+  console.log("selectedRowKeys changed: ", newSelectedRowKeys);
+  setSelectedRowKeys(newSelectedRowKeys);
+};
 
+const rowSelection = {
+  selectedRowKeys,
+  onChange: onSelectChange,
+};
+
+
+const columns: ColumnsType<DataType> = [
+  {
+    title: "STT",
+    dataIndex: "key",
+    key: "key",
+  },
+  {
+    title: "Tên bản ghi",
+    dataIndex: "nameBG",
+    key: "nameBG",
+    render: (_, record) => (
+      <div className="RecordNameTPUQ">
+        <div className="RecordNameTPUQ_Name">
+          <p>{record.nameBG}</p>
+        </div>
+        <div className="RecordNameTPUQ_SubName">
+          <div className="RecordNameTPUQ_SubName-item">
+            <span>{record.phongcachBG}</span>
+          </div>
+          <div className="RecordNameTPUQ_SubName-item">
+            <img
+              src={require("../../../assets/image/status-icon/Eblue.png")}
+            />
+          </div>
+          <div className="RecordNameTPUQ_SubName-item">
+            <span>{record.typeBG}</span>
+          </div>
+          <div className="RecordNameTPUQ_SubName-item">
+            <img
+              src={require("../../../assets/image/status-icon/Eblue.png")}
+            />
+          </div>
+          <div className="RecordNameTPUQ_SubName-item">
+            <span>{record.timeBG}</span>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Mã ISRC",
+    dataIndex: "ISRC",
+    key: "ISRC",
+  },
+  {
+    title: "Ca sĩ",
+    dataIndex: "casi",
+    key: "casi",
+  },
+  {
+    title: "Tác giả",
+    dataIndex: "tacgia",
+    key: "tacgia",
+  },
+  {
+    title: "Ngày Tải",
+    dataIndex: "ngayTai",
+    key: "ngayTai",
+  },
+  {
+    title: "Tình Trang",
+    key: "status",
+    dataIndex: " status",
+    render: (_, { status }) => (
+      <>
+        {/* 1 => mới
+          2=> Còn thời hạn
+          3=> hết hạn
+          0 => hủy
+      */}
+        {status === 1 ? (
+          <div className="Item-HLuc">
+            <img
+              src={require("../../../assets/image/status-icon/Egreen.png")}
+            />
+            <p>Mới</p>
+          </div>
+        ) : status === 2 ? (
+          <div className="Item-HLuc">
+            <img
+              src={require("../../../assets/image/status-icon/Eblue.png")}
+            />
+            <p>Đã phê duyệt</p>
+          </div>
+        ) : (
+          <div className="Item-HLuc">
+            <img
+              src={require("../../../assets/image/status-icon/Ered.png")}
+            />
+            <p>Bị từ chối</p>
+          </div>
+        )}
+      </>
+    ),
+  },
+  {
+    key: "action",
+    render: (_, record) => (
+      <Space size="middle">
+        <a>Nghe</a>
+
+       
+      </Space>
+    ),
+  },
+];
+const data: DataType[] = [];
+  for (let i = 1; i < 50; i++) {
+    data.push({
+      key: i,
+      nameBG: "Gorgeous Wooden Bike",
+      phongcachBG: "Ballad",
+      typeBG: "Audio",
+      timeBG: "3:12",
+      ISRC: "VNA1423525",
+      casi: "Vương Anh Tú",
+      tacgia: "Vương Phong",
+      ngayTai: "01/04/2021 15:53:13",
+      status: i > 2 ? 0 : i,
+    });
+  }
   
   const CancelEditTable = () => {
     SetOpenEdit(false);
@@ -114,8 +263,13 @@ const handleOpenThemBG = () =>{
   return (
     <div className="TabTPUyQuyen">
       <CtrlTabTacPhamUYQuyen />
-
-      <TableTabTPUyQuyen openTBEdit={openEdit} />
+      <TableSelection 
+      openTBEdit ={openEdit}
+       rowSelection = {rowSelection} 
+      data ={data}
+      columns={columns}
+       />
+      {/* <TableTabTPUyQuyen openTBEdit={openEdit} /> */}
       {openEdit ? (
         <ActionsPages dataRender={actionsTCBG} />
       ) : (

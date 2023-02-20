@@ -23,6 +23,7 @@ export interface IParams {
     title?: string 
     w? : number
     data? : Array<{value: string, label: string}>
+    placeholder? : string
   }
 
   interface DataTypeKhobG {

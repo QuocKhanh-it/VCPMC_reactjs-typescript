@@ -9,6 +9,7 @@ import ContentChiTietHD from "../../layout/ContentLayout/ContentChiTietHD";
 import ContentCreateHD from "../../layout/ContentLayout/ContentCreateHD";
 import ContentCreateHDKT from "../../layout/ContentLayout/ContentCreateHDKT";
 import ContentChiTietHDKT from "../../layout/ContentLayout/ContentChiTietHDKT";
+import ContentPageLapLichPhat from "../../layout/ContentLayout/ContentLapLicPhat";
 
 const { Content } = Layout;
 
@@ -23,19 +24,7 @@ const QuanLyPage = () => {
           <LayoutHeader />
           <Content>
      
-            {tag === "chitiethd" ? (
-              <ContentChiTietHD />
-
-            ) :tag === "chitiet_hdkt" ? (
-              <ContentChiTietHDKT />
-              
-            ): tag === "createhd" ? (
-              <ContentCreateHD />
-            ) : tag === "create_hdkt" ? (
-              <ContentCreateHDKT />
-            ) : (
-              <ContentPageQLy />
-            )}
+          <ContentPageLapLichPhat/>
           </Content>
         </Layout>
       </Layout>

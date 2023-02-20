@@ -13,7 +13,7 @@ const CtrSelect : React.FC<ISelect> = (props) => {
     }
   
     <Select
-      defaultValue="Tất cả"
+      defaultValue={props.placeholder ? props.placeholder: "Tất cả"}
       style={{ width:  props.w ? props.w : 160 , height: 40 }}
       suffixIcon = {<img src={require('../../../assets/image/Vector.png')}/>}
       //   onChange={handleChange}
@@ -22,6 +22,7 @@ const CtrSelect : React.FC<ISelect> = (props) => {
         backgroundColor:'#3E3E5B',
         color: '#ffffff'
       }}
+      placeholder={props.placeholder}
     />
     </div>
   );

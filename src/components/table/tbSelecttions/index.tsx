@@ -19,10 +19,10 @@ interface DataType {
   status: number;
 }
 
-const TableTabTPUyQuyen  :React.FC<{openTBEdit : boolean}>= (props) => {
+const TableSelection  :React.FC<{openTBEdit : boolean , rowSelection: any , columns : ColumnsType<any> , data : any[]  }>= (props) => {
+
+
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-
-
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
@@ -158,18 +158,18 @@ const TableTabTPUyQuyen  :React.FC<{openTBEdit : boolean}>= (props) => {
     });
   }
   return (
-    <div className="Table-DSHopDong">
+    <div className="Table-Selection">
       { props.openTBEdit? (
         <Table
-          columns={columns}
-          dataSource={data}
+          columns={props.columns}
+          dataSource={props.data}
           pagination={{ pageSize: 13 }}
-          rowSelection={rowSelection}
+          rowSelection={props.rowSelection}
         />
       ) : (
         <Table
-          columns={columns}
-          dataSource={data}
+          columns={props.columns}
+          dataSource={props.data}
           pagination={{ pageSize: 13 }}
         />
       )}
@@ -177,4 +177,4 @@ const TableTabTPUyQuyen  :React.FC<{openTBEdit : boolean}>= (props) => {
   );
 };
 
-export default TableTabTPUyQuyen;
+export default TableSelection;

@@ -98,3 +98,6 @@ main.ant-layout-content {
 span.anticon.anticon-check-circle {
   font-size: 32px !important;
 }
+.Content-body{
+  position: relative;
+}

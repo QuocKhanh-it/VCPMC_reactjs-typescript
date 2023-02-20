@@ -84,9 +84,9 @@ const items: MenuItem[] = [
     </>,
     "/doanhthu",
     [
-      getItem("Báo cáo doanh thu", "/baocao-danhthu"),
-      getItem("Lịch sử đổi soát", "/lichsu-doisoat"),
-      getItem("Phân phối doanh thu", "/phanphoi-doanhthu"),
+      getItem("Báo cáo doanh thu", "/doanhthu/baocaodt"),
+      getItem("Lịch sử đổi soát", "/doanhthu/lichsu-doisoat"),
+      getItem("Phân phối doanh thu", "/doanhthu/phanphoidt"),
     ]
   ),
   getItem(
@@ -99,11 +99,11 @@ const items: MenuItem[] = [
     </>,
     "/setting",
     [
-      getItem("Phân quyền người dùng", "/phanquyen-user"),
-      getItem("Cấu hình", "/cauhinh"),
-      getItem("Quản lý hợp đồng", "/setting-ql_hopdong"),
-      getItem("Thông tin tác phẩm", "/setting-thongtin_tacpham"),
-      getItem("Chu kỳ đổi soát", "/chuky_doisoat"),
+      getItem("Phân quyền người dùng", "/setting/phanquyen-user"),
+      getItem("Cấu hình", "/setting/cauhinh"),
+      getItem("Quản lý hợp đồng", "/setting/ql_hopdong"),
+      getItem("Thông tin tác phẩm", "/setting/thongtin_tacpham"),
+      getItem("Chu kỳ đổi soát", "/setting/chuky_doisoat"),
     ]
   ),
 

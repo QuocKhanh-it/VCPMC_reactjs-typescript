@@ -127,10 +127,7 @@ const TablePlayLits: React.FC<{}> = (props) => {
    
   ];
 
-  // const handleOpenMD =(Value: object) =>{
-  // props.handleOpenMDLDH(Value)
-
-  // }
+ 
   const data: DataTypePlayList[] = [];
   for (let i = 1; i < 50; i++) {
     data.push({
@@ -153,24 +150,7 @@ const TablePlayLits: React.FC<{}> = (props) => {
             dataSource={data}
             pagination={{ pageSize: 13 }}
           />
-      {/* {control === "list" ? (
-        tag === "pheduyet" ? (
-          <Table
-            rowSelection={rowSelection}
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 13 }}
-          />
-        ) : (
-          <Table
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 13 }}
-          />
-        )
-      ) : (
-        <CardListItemBanGhi data={data} />
-      )} */}
+
     </div>
   );
 };
