@@ -77,4 +77,28 @@ export const breadlink = [
     path: "chitiet-doanhThu",
     name: "Chi tiết doanh thu",
   },
+  {
+    path: "playlist",
+    name: "Playlist",
+  },
+  {
+    path: "create-playlist",
+    name: "Thêm playlist mới",
+  },
+  {
+    path: "addbanghi",
+    name: "Thêm bản ghi vào playlist",
+  },
+  {
+    path: "chitietplaylist",
+    name: "Chi tiết playlist",
+  },
+  {
+    path: "laplichphat",
+    name: "Lập lịch phát",
+  },
+  {
+    path: "chitietlichphat",
+    name: "Chi tiết",
+  },
 ];

@@ -49,16 +49,16 @@ const CardListItemBanGhi: React.FC<{ data: DataTypeKhobG[] }> = (props) => {
                   </div>
                   <div className="CardListItemBanGhi_Item-Decription_Type">
                     <div className="CardListItemBanGhi_Item-Decription_TypeItem">
-                      <label htmlFor="theloai">{item.theLoai}</label>
-                      <p>Pop</p>
+                      <label htmlFor="theloai">Thể loại</label>
+                      <p>{item.theLoai}</p>
                     </div>
                     <div className="CardListItemBanGhi_Item-Decription_TypeItem">
-                      <label htmlFor="dinhdang">{item.dinhDang}</label>
-                      <p>Audio</p>
+                      <label htmlFor="dinhdang">Định dạng</label>
+                      <p>{item.dinhDang}</p>
                     </div>
                     <div className="CardListItemBanGhi_Item-Decription_TypeItem">
-                      <label htmlFor="theloai">{item.thoiLuong}</label>
-                      <p>03:00</p>
+                      <label htmlFor="thoiLuong">Thời lượng</label>
+                      <p>{item.thoiLuong}</p>
                     </div>
 
                     <div className="CardListItemBanGhi_Item-Decription_BtnEdit">

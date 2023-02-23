@@ -10,21 +10,45 @@ import ContentCreateHD from "../../layout/ContentLayout/ContentCreateHD";
 import ContentCreateHDKT from "../../layout/ContentLayout/ContentCreateHDKT";
 import ContentChiTietHDKT from "../../layout/ContentLayout/ContentChiTietHDKT";
 import ContentPagePlayList from "../../layout/ContentLayout/ContentPagePlayList";
+import CreatePlayList from "../../layout/ContentLayout/ContentPagePlayList/CreatePlayList";
+import AddBanGhi from "../../layout/ContentLayout/ContentPagePlayList/AddBanGhi";
+import ChitietPlaylist from "../../layout/ContentLayout/ContentPagePlayList/ChiTietPlaylist";
 
 const { Content } = Layout;
 
 const PlayListPage = () => {
   const { page, control, tag, id }: IParams = useParams();
-
+  const showContent = () => {
+    switch (`${id}`) {
+      case "addbanghi":
+        return <AddBanGhi />;
+      default:
+        switch (`${tag}`) {
+          case "create-playlist":
+            return <CreatePlayList />;
+            case "chitietplaylist":
+              return <ChitietPlaylist/>
+          default:
+            switch (`${control}`) {
+              case "list":
+                return <ContentPagePlayList />;
+              case "grid":
+                return <ContentPagePlayList />;
+              default:
+                break;
+            }
+            break;
+        }
+        break;
+    }
+  };
   return (
     <div className="MainApp">
       <Layout>
         <SiderMenu />
         <Layout>
           <LayoutHeader />
-          <Content>
-              <ContentPagePlayList/>
-          </Content>
+          <Content>{showContent()}</Content>
         </Layout>
       </Layout>
     </div>

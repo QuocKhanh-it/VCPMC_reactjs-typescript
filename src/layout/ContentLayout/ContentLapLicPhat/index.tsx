@@ -39,7 +39,7 @@ const ContentPageLapLichPhat = () => {
       key: "actionCT",
       render: (_, record) => (
         <Space size="middle">
-          <Link to={`${pathname}/chitiethd/${record.key}}`}>Xem Chi tiết</Link>
+          <Link to={`${pathname}/chitietlichphat/${record.key}_${record.tenLich}`}>Xem Chi tiết</Link>
         </Space>
       ),
     },

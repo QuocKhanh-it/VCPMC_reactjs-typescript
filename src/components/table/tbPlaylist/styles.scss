@@ -1,6 +1,6 @@
-.Table-LayList{
+.Table-LayList {
   margin-top: 32px;
-  
+  width: 1534px;
   .Item-HLuc {
     height: 47px;
     display: block;
@@ -8,10 +8,9 @@
     // justify-content: baseline;
     // align-items: center;
     padding: 0;
-    &_Group{
+    &_Group {
       display: flex;
       align-items: center;
-      
     }
 
     p {
@@ -19,12 +18,11 @@
       margin-left: 12px;
     }
 
-    &_Sub{
-      p{
+    &_Sub {
+      p {
         font-size: 12px;
         opacity: 0.5;
       }
-      
     }
   }
 }
@@ -79,12 +77,12 @@
         line-height: 20px;
 
         color: #ffffff !important;
-        a{
-          color: #FF7506;
-          text-decoration:underline !important;
+        a {
+          color: #ff7506;
+          text-decoration: underline !important;
         }
       }
-      .ant-table-row-selected{
+      .ant-table-row-selected {
         td.ant-table-cell {
           background: rgba(47, 47, 65, 0.7) !important;
         }
@@ -97,12 +95,11 @@
 
   li.ant-pagination-item {
     a {
-      
       font-family: "Montserrat";
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
-    
+
       color: #fff9f4 !important;
     }
   }
@@ -114,8 +111,64 @@
   svg {
     color: #ffac69 !important;
   }
-  :where(.css-dev-only-do-not-override-1cr6b6).ant-table-wrapper .ant-table-tbody >tr.ant-table-row-selected >td {
+  :where(.css-dev-only-do-not-override-1cr6b6).ant-table-wrapper
+    .ant-table-tbody
+    > tr.ant-table-row-selected
+    > td {
     background: transparent !important;
+  }
 }
-}
+.Item-CD {
+  border: 1px solid #727288;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  p {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
 
+    color: #f5f5ff;
+
+    opacity: 0.7;
+    margin: 0;
+  }
+  .RecordNameTPUQ {
+  &_Name {
+    p {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #ffffff;
+      margin-bottom: 0;
+    }
+  }
+  &_SubName {
+    display: flex;
+    align-items: center;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 4px;
+      span {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px I !important;
+        line-height: 18px;
+
+        color: #ffffff !important;
+
+        opacity: 0.5 !important;
+      }
+    }
+  }
+}
+}

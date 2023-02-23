@@ -19,9 +19,14 @@ interface DataType {
   status: number;
 }
 
-const TableSelection  :React.FC<{openTBEdit : boolean , rowSelection: any , columns : ColumnsType<any> , data : any[]  }>= (props) => {
-
-
+const TableSelection: React.FC<{
+  openTBEdit: boolean;
+  rowSelection: any;
+  columns: ColumnsType<any>;
+  data: any[];
+  sizeTb?: number;
+  heightTb? :number;
+}> = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
@@ -158,8 +163,14 @@ const TableSelection  :React.FC<{openTBEdit : boolean , rowSelection: any , colu
     });
   }
   return (
-    <div className="Table-Selection">
-      { props.openTBEdit? (
+    <div
+      className="Table-Selection"
+      style={{
+        width: props.sizeTb ? props.sizeTb : "1534px",
+        height: props.heightTb ? props.heightTb : "680px",
+      }}
+    >
+      {props.openTBEdit ? (
         <Table
           columns={props.columns}
           dataSource={props.data}

@@ -8,7 +8,18 @@ export interface IParams {
     id?: string
     action? : string
   }
-
+  export interface DataTypeBanGhi {
+    key: number;
+    nameBG: string;
+    phongcachBG: string;
+    typeBG: string;
+    timeBG: string;
+    ISRC: string;
+    casi: string;
+    tacgia: string;
+    ngayTai: string;
+    status: number;
+  }
   export interface IProfile {
     email: string
     id: string

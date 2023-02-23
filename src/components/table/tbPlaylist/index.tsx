@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { DataTypePlayList, IParams } from "../../../types";
 import CardListItemBanGhi from "../../card/cardKhoBG";
 import { DataTypeKhobG } from "../../../types";
+import CardListItemPlaylist from "../../card/cardPlaylist";
 
 const TablePlayLits: React.FC<{}> = (props) => {
   const history = useHistory();
@@ -38,6 +39,19 @@ const TablePlayLits: React.FC<{}> = (props) => {
       title: "Chủ đề",
       dataIndex: "chuDe",
       key: "chuDe",
+      render: (_, { chuDe }) => (
+        <Space size="middle">
+          {chuDe.map((item, inđex) => {
+            return (
+              <>
+                <div className="Item-CD">
+                  <p>{item}</p>
+                </div>
+              </>
+            );
+          })}
+        </Space>
+      ),
     },
     {
       title: "Ngày tạo",
@@ -49,7 +63,7 @@ const TablePlayLits: React.FC<{}> = (props) => {
       dataIndex: "nguoiTao",
       key: "nguoiTao",
     },
-  
+
     // {
     //   title: "Thời hạn sử dụng",
     //   key: " hieuLuc",
@@ -117,40 +131,39 @@ const TablePlayLits: React.FC<{}> = (props) => {
       key: "actionCT",
       render: (_, record) =>
         tag === "pheduyet" ? (
-         ""
+          ""
         ) : (
           <Space size="middle">
-          <Link to={`${pathname}/capnhatbg/${record.key}`}>Chi tiết</Link>
-        </Space>
+            <Link to={`${pathname}/chitietplaylist/${record.key}_${record.title}`}>Chi tiết</Link>
+          </Space>
         ),
     },
-   
   ];
-
- 
+  
   const data: DataTypePlayList[] = [];
   for (let i = 1; i < 50; i++) {
     data.push({
       key: i,
       title: "Top ca khúc 2021",
-      soBG:"20",
+      soBG: "20",
       thoiLuong: "01:04:27",
-      chuDe:['Pop', 'Chill'],
-      ngayTao: '22/10/2020',
-      nguoiTao: 'Cindy Cường'
+      chuDe: ["Pop", "Chill"],
+      ngayTao: "22/10/2020",
+      nguoiTao: "Cindy Cường",
     });
   }
 
-
   return (
     <div className="Table-LayList">
-       <Table
-     
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 13 }}
-          />
-
+      {control === "grid" ? (
+        <CardListItemPlaylist data={data} />
+      ) : (
+        <Table
+          columns={columns}
+          dataSource={data}
+          pagination={{ pageSize: 13 }}
+        />
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import ActionsPages from "../../../components/actionpages/ActionPages";
 
 import ContentTitle from "../../../components/common/Content/contentTitle";
@@ -8,6 +9,11 @@ import TablePlayLits from "../../../components/table/tbPlaylist";
 import CtrPlayList from "../../ControllerPageLayout/CtrPlayList";
 
 const ContentPagePlayList = () => {
+  const history = useHistory()
+  const currentpath = history.location.pathname
+  const handleThemPlayList =()=>{
+    history.push(`${currentpath}/create-playlist`)
+  }
   const actionsPagePlayList = [
     {
       linkIcon: (
@@ -18,7 +24,7 @@ const ContentPagePlayList = () => {
         />
       ),
       title: "Thêm Playlist",
-      onClickItem: () => {},
+      onClickItem:handleThemPlayList,
     },
   ];
 

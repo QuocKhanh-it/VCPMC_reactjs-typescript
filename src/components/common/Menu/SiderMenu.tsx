@@ -3,7 +3,8 @@ import React from "react";
 import { Layout, Menu, Avatar } from "antd";
 import type { MenuProps } from "antd";
 import "./styles.scss";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { IParams } from "../../../types";
 
 const { Sider } = Layout;
 
@@ -45,7 +46,7 @@ const items: MenuItem[] = [
         <span>Playlist</span>
       </div>
     </>,
-    "/playlist"
+    "/playlist/list"
   ),
   //lap lich phat
   getItem(
@@ -134,9 +135,11 @@ const items: MenuItem[] = [
 
 const SiderMenu = () => {
   const history = useHistory();
+  const {page , control} : IParams= useParams()
   const onClickItem: MenuProps["onClick"] = (e) => {
     history.push(e.key);
   };
+  const keySelect = control? `/${page}/${control}` :`/${page}`
   return (
     <Sider trigger={null} collapsible>
       <div className="logo">
@@ -147,6 +150,7 @@ const SiderMenu = () => {
       </div>
       <Menu
         onClick={onClickItem}
+        selectedKeys={[keySelect]}
         style={{
           width: 170,
           height: 1080,

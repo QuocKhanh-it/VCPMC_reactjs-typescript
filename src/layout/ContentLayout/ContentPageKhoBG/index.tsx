@@ -57,7 +57,6 @@ const ContentPageKhoBG = () => {
     },
   ];
 
-
   const actionsPagePheDuyet = [
     {
       linkIcon: (
@@ -68,7 +67,7 @@ const ContentPageKhoBG = () => {
         />
       ),
       title: "Phê duyệt",
-      onClickItem:() => {},
+      onClickItem: () => {},
     },
     {
       linkIcon: (
@@ -107,14 +106,13 @@ const ContentPageKhoBG = () => {
           )}
         </div>
         <ModalActionHuy
-        title={`Lý do từ chối phê duyệt`}
-        holder={`Cho chúng tôi biết lý do bạn muốn từ chối phê duyệt bản ghi này...`}
-        txtBtnCancel={" Hủy"}
-        txtBtnSubmit={" Từ chối"}
-        isCancel={handelCancelModal}
-        isOpenModal={openActionHuyHD}
-      />
-        
+          title={`Lý do từ chối phê duyệt`}
+          holder={`Cho chúng tôi biết lý do bạn muốn từ chối phê duyệt bản ghi này...`}
+          txtBtnCancel={" Hủy"}
+          txtBtnSubmit={" Từ chối"}
+          isCancel={handelCancelModal}
+          isOpenModal={openActionHuyHD}
+        />
       </div>
     </div>
   );

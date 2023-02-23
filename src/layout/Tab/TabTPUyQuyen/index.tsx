@@ -7,23 +7,12 @@ import TabTacPhamEFooter from "../../../components/footer/tabTacPhamEditFooter";
 import ModalActionHuy from "../../../components/modal/modalActionhuy";
 import ModalActionThemBanGhi from "../../../components/modal/modalThemBanGhi";
 import TableSelection from "../../../components/table/tbSelecttions";
-import { IParams } from "../../../types";
+import { DataTypeBanGhi, IParams } from "../../../types";
 import CtrlTabTacPhamUYQuyen from "../../ControllerPageLayout/CtrlTabTacPhamUYQuyen";
 import "./styles.scss";
 
 
-interface DataType {
-  key: number;
-  nameBG: string;
-  phongcachBG: string;
-  typeBG: string;
-  timeBG: string;
-  ISRC: string;
-  casi: string;
-  tacgia: string;
-  ngayTai: string;
-  status: number;
-}
+
 const TabTPUyQuyen = () => {
   const [openEdit, SetOpenEdit] = useState(false);
   const [openModalTCBG, SetOpenModalTCBG] = useState(false);
@@ -134,7 +123,7 @@ const rowSelection = {
 };
 
 
-const columns: ColumnsType<DataType> = [
+const columns: ColumnsType<DataTypeBanGhi> = [
   {
     title: "STT",
     dataIndex: "key",
@@ -240,7 +229,7 @@ const columns: ColumnsType<DataType> = [
     ),
   },
 ];
-const data: DataType[] = [];
+const data: DataTypeBanGhi[] = [];
   for (let i = 1; i < 50; i++) {
     data.push({
       key: i,

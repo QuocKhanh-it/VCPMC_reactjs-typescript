@@ -6,25 +6,19 @@ import "./styles.scss";
 const BtnTabPlayList = () => {
   const [currentTabShow, setCurrentTabShow] = useState(true);
     const history = useHistory()
+    const pathname = history.location.pathname
     const {tag} : IParams = useParams()
 
   const handleChangeShow2List =()=>{
     setCurrentTabShow(true)
-    // if(tag==="pheduyet"){
-    //   history.replace('/khobanghi/list/pheduyet')
-    // }else{
-    //   history.replace('/khobanghi/list')
-    // }
+    history.replace('/playlist/list')
     
   }
   const handleChangeShow2Grid =()=>{
     setCurrentTabShow(false)
-    // if(tag==="pheduyet"){
-    //   history.replace('/khobanghi/grid/pheduyet')
-    // }else{
-    //   history.replace('/khobanghi/grid')
+ 
+      history.replace('/playlist/grid')
 
-    // }
 
   }
   return (

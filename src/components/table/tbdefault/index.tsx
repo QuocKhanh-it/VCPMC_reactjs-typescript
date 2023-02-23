@@ -10,17 +10,37 @@ import ModalLyDoHuyHD from "../../modal/modalLyDoHuyHD";
 import { Interface } from "readline";
 
 const TableDefault: React.FC<{
+  title?: string;
   columns: ColumnsType<any>;
   data: any[];
   sizeTb?: number;
+  pagesize?: number;
+  heightTb?: number;
 }> = (props) => {
   return (
-    <div className="TableDefault">
+    <div
+      className="TableDefault"
+      style={{
+        width: props.sizeTb ? props.sizeTb : "1534px",
+        height: props.heightTb ? props.heightTb : "680px",
+      }}
+    >
+      {props.title ? (
+        <div className="TableDefault_title">
+          <h3>{props.title}</h3>
+        </div>
+      ) : (
+        ""
+      )}
+
       <Table
         columns={props.columns}
         dataSource={props.data}
-        pagination={{ pageSize: 13 }}
-        style={{width : props.sizeTb ? props.sizeTb : '1534px' }}
+        pagination={{ pageSize: props.pagesize ? props.pagesize : 13 }}
+        style={{
+          width: props.sizeTb ? props.sizeTb : "1534px",
+          height: props.heightTb ? props.heightTb : "680px",
+        }}
       />
     </div>
   );

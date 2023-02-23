@@ -121,11 +121,13 @@ const TableKhoBG: React.FC<{}> = (props) => {
       key: "actionCT",
       render: (_, record) =>
         tag === "pheduyet" ? (
-         ""
+          ""
         ) : (
           <Space size="middle">
-          <Link to={`${pathname}/capnhatbg/${record.key}_${record.tenBG}`}>Cập nhật</Link>
-        </Space>
+            <Link to={`${pathname}/capnhatbg/${record.key}_${record.tenBG}`}>
+              Cập nhật
+            </Link>
+          </Space>
         ),
     },
     {
@@ -180,23 +182,21 @@ const TableKhoBG: React.FC<{}> = (props) => {
 
   return (
     <div className="Table-KhoBG">
-      {control === "list" ? (
-        tag === "pheduyet" ? (
-          <Table
-            rowSelection={rowSelection}
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 13 }}
-          />
-        ) : (
-          <Table
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 13 }}
-          />
-        )
-      ) : (
+      {control === "grid" ? (
         <CardListItemBanGhi data={data} />
+      ) : tag === "pheduyet" || control=== "pheduyet" ? (
+        <Table
+          rowSelection={rowSelection}
+          columns={columns}
+          dataSource={data}
+          pagination={{ pageSize: 13 }}
+        />
+      ) : (
+        <Table
+          columns={columns}
+          dataSource={data}
+          pagination={{ pageSize: 13 }}
+        />
       )}
     </div>
   );
