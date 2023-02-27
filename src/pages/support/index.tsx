@@ -2,34 +2,29 @@ import { Layout } from "antd";
 import React from "react";
 import { useParams } from "react-router-dom";
 import SiderMenu from "../../components/common/Menu/SiderMenu";
-import ContentPageBaoCaoDT from "../../layout/ContentLayout/ContentBaoCaoDT";
-import ContentPageLichsuDoiSoat from "../../layout/ContentLayout/ContentLichsuDoiSoat";
-import ContentPageKhoBG from "../../layout/ContentLayout/ContentPageKhoBG";
-import ContentPagePhanPhoiDT from "../../layout/ContentLayout/ContentPhanPhoiDT";
+import ContentPageHDSD from "../../layout/ContentLayout/ContentPageSuport";
+import DownloadAppPage from "../../layout/ContentLayout/ContentPageSuport/DowloadAppPage";
+import FeedbackPage from "../../layout/ContentLayout/ContentPageSuport/FeedbackPage";
+
 import ContentPhanQuyenUser from "../../layout/ContentLayout/ContentPhanQuyenUser";
 import HandelPagePQUser from "../../layout/ContentLayout/ContentPhanQuyenUser/HandelPagePQUSer";
 import LayoutHeader from "../../layout/Header/LayoutHeader";
 import { IParams } from "../../types";
 
-const BCDoanhThuPages = () => {
+const SupportPages = () => {
   const { page, control, tag, id }: IParams = useParams();
 
   const { Content } = Layout;
   const showContent = () => {
-    switch (`${tag}`) {
-      case "setting_create-user":
-        return <HandelPagePQUser/>;
-      case "setting_update-user":
-        return <HandelPagePQUser/>;
-
+    switch (`${control}`) {
+      case "HDSD":
+        return <ContentPageHDSD />;
+      case "dowload-app":
+        return <DownloadAppPage />;
+        case "feedback":
+          return <FeedbackPage />;
+  
       default:
-        switch (`${control}`) {
-          case "phanquyen-user":
-            return <ContentPhanQuyenUser />;
-
-          default:
-            break;
-        }
         break;
     }
   };
@@ -46,4 +41,4 @@ const BCDoanhThuPages = () => {
   );
 };
 
-export default BCDoanhThuPages;
+export default SupportPages;

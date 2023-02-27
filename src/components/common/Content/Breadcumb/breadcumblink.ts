@@ -101,4 +101,45 @@ export const breadlink = [
     path: "chitietlichphat",
     name: "Chi tiết",
   },
+  {
+    path: "chitiet-dvsd",
+    name: "Chi tiết",
+  },
+  {
+    path: "dvsd-chitiet_user",
+    name: "Chi tiết > Thông tin người dùng",
+  },
+  {
+    path: "update-user_dvsd",
+    name: "Chỉnh sửa thông tin",
+  },
+  {
+    path: "add-thietbi",
+    name: "Thêm thiết bị mới",
+  },  
+  {
+    path: "setting_create-user",
+    name: "Thêm người dùng",
+  },  
+  {
+    path: "setting_update-user",
+    name: "Chỉnh sửa",
+  },  
+  {
+    path: "support",
+    name: "Hỗ trợ",
+  },
+  {
+    path: "HDSD",
+    name: "Hướng dẫn sử dụng",
+  },
+  {
+    path: "dowload-app",
+    name: "Tải App",
+  },
+  {
+    path: "feedback",
+    name: "Feedback",
+  },
+
 ];

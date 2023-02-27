@@ -47,12 +47,13 @@ const TabRoleUser = () => {
       title: "Tên nhóm người dùng",
       dataIndex: "tenNhomUser",
       key: "tenNhomUser",
-      width: '12%',
+      width: '14%',
     },
     {
       title: "Số lượng người dùng",
       dataIndex: "soluong",
       key: "soluong",
+      width: '14%', 
     },
 
     {

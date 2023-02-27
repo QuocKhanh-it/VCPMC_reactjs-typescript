@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import SiderMenu from "../../components/common/Menu/SiderMenu";
 import ContentPageBaoCaoDT from "../../layout/ContentLayout/ContentBaoCaoDT";
 import ContentPageLichsuDoiSoat from "../../layout/ContentLayout/ContentLichsuDoiSoat";
+import ChiTietLichSuDoiSoat from "../../layout/ContentLayout/ContentLichsuDoiSoat/ChiTietLichSuDoiSoat";
 import ContentPageKhoBG from "../../layout/ContentLayout/ContentPageKhoBG";
 import ContentPagePhanPhoiDT from "../../layout/ContentLayout/ContentPhanPhoiDT";
 import ChiTietPPDoanhThu from "../../layout/ContentLayout/ContentPhanPhoiDT/ChiTietPPDoanhThu";
@@ -20,6 +21,8 @@ const BCDoanhThuPages = () => {
       case "chitiet-doanhThu":
         return <ChiTietPPDoanhThu />;
 
+        case "chitiet-doisoatdt":
+          return <ChiTietLichSuDoiSoat />;
       default:
         switch (`${control}`) {
           case "phanphoidt":

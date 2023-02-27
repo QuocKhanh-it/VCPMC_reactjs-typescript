@@ -8,20 +8,23 @@ import TableDefault from "../../../components/table/tbdefault";
 import TablePlayLits from "../../../components/table/tbPlaylist";
 import CtrPlayList from "../../ControllerPageLayout/CtrPlayList";
 import { Space, Switch } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import TableSelection from "../../../components/table/tbSelecttions";
+import { IParams } from "../../../types";
 
-const ContentPageQLDonViSD = () => {
+const ContentChiTietDonViSD = () => {
   const history = useHistory();
+  const { page, control, tag, id, action }: IParams = useParams();
+  const linkpagechitietuser = `/${page}/${control}/dvsd-chitiet_user`;
+  const tenDvsd = id?.slice(id.indexOf("_") + 1);
   const pathname = history.location.pathname;
   interface DataType {
     key: number;
-    tenTK: string;
-    soHD: string;
-    admin: string;
-    user : string;
-    thietbi: string;
-    ngayHenHan: string;
+    tenUser: string;
+    role: string;
+    email: string;
+    tenDN: string;
+    lastUpdate: string;
     trangThai: boolean;
   }
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
@@ -42,20 +45,20 @@ const ContentPageQLDonViSD = () => {
       key: "key",
     },
     {
-      title: "Tên tài khoản quản trị",
-      dataIndex: "tenTK",
-      key: "tenTK",
+      title: "Tên người dùng",
+      dataIndex: "tenUser",
+      key: "tenUser",
     },
     {
-      title: "Số hợp đồng",
-      dataIndex: "soHD",
-      key: "soHD",
+      title: "Vai trò",
+      dataIndex: "role",
+      key: "role",
     },
 
     {
-      title: "Admin",
-      dataIndex: "admin",
-      key: "admin",
+      title: "Tên đăng nhập",
+      dataIndex: "tenDN",
+      key: "tenDN",
     },
     {
       title: "Người dùng",
@@ -63,23 +66,19 @@ const ContentPageQLDonViSD = () => {
       key: "user",
     },
     {
-      title: "Thiết bị được chỉ định",
-      dataIndex: "thietbi",
-      key: "thietbi",
+      title: "Cập nhật lần cuối",
+      dataIndex: "lastUpdate",
+      key: "lastUpdate",
     },
-    {
-      title: "Ngày Hết Hạn",
-      dataIndex: "ngayHenHan",
-      key: "ngayHenHan",
-    },
+
     {
       key: "actionHuy",
-      render: (_, {trangThai}) => (
+      render: (_, { trangThai }) => (
         <>
           <Space size="middle">
             <div>
-              <Switch defaultChecked={trangThai} style={{marginRight:12}}/>
-              {trangThai ===true? "Đang kích hoạt" : "Ngừng kích hoạt"}
+              <Switch defaultChecked={trangThai} style={{ marginRight: 12 }} />
+              {trangThai === true ? "Đang kích hoạt" : "Ngừng kích hoạt"}
             </div>
           </Space>
         </>
@@ -89,22 +88,51 @@ const ContentPageQLDonViSD = () => {
       key: "actionCT",
       render: (_, record) => (
         <Space size="middle">
-          <Link to={`${pathname}/chitiet-dvsd/${record.key}_${record.tenTK}`}>Xem Chi tiết</Link>
+          <Link to={`${linkpagechitietuser}/${record.key}}`}>
+            Xem Chi tiết
+          </Link>
         </Space>
       ),
     },
-   
   ];
-  const actionsPageDVSD= [
+
+  const handleAddUser2DVSD = () => {
+    const actionpath = `/${page}/${control}/dvsd-add_user/${id}`;
+    history.push(actionpath);
+    console.log();
+  };
+  const actionsPageDVSD = [
     {
       linkIcon: (
         <img
-          src={require("../../../assets/image/action-icon/fi_x.png")}
+          src={require("../../../assets/image/action-icon/Add.png")}
+          width={32}
+          alt="Thêm người dùng"
+        />
+      ),
+      title: "Thêm người dùng",
+      onClickItem: handleAddUser2DVSD,
+    },
+    {
+      linkIcon: (
+        <img
+          src={require("../../../assets/image/action-icon/trash-alt.png")}
           width={32}
           alt="Xóa"
         />
       ),
       title: "Xóa",
+      onClickItem: () => {},
+    },
+    {
+      linkIcon: (
+        <img
+          src={require("../../../assets/image/action-icon/fi_users.png")}
+          width={32}
+          alt="Vai trò"
+        />
+      ),
+      title: "Vai trò",
       onClickItem: () => {},
     },
   ];
@@ -113,25 +141,27 @@ const ContentPageQLDonViSD = () => {
   for (let i = 1; i < 50; i++) {
     data.push({
       key: i,
-     
-    tenTK:'Cty TNHH TM DV ABCEDEF',
-    soHD: 'HD123',
-    admin: 'Admin 1',
-    user : '21',
-    thietbi:'15',
-    ngayHenHan:'21/04/2021',
-    trangThai: i>2 ? false : true
+
+      tenUser: "Nguyen Van A",
+      role: "QC",
+      email: "nguyenvanb@gmail.com",
+      tenDN: "nguyenvanb",
+      lastUpdate: "21/04/2021",
+      trangThai: i > 2 ? false : true,
     });
   }
   return (
     <div className="Content-App">
-      <ContentTitle title="Danh sách đơn vị sử dụng" />
+      <ContentTitle title={`Đơn vị sử dụng - ${tenDvsd}`} />
       <div className="Content-body">
         <div className="Content-body_PlaylistPage">
-          <SearchComponent textHint={"Tên khoản giá trị, số hợp đồng,..."} width={517}/>
+          <SearchComponent
+            textHint={"Tên khoản giá trị, số hợp đồng,..."}
+            width={517}
+          />
           <TableSelection
             openTBEdit={true}
-            rowSelection ={rowSelection}
+            rowSelection={rowSelection}
             columns={columns}
             data={data}
           />
@@ -142,4 +172,4 @@ const ContentPageQLDonViSD = () => {
   );
 };
 
-export default ContentPageQLDonViSD;
+export default ContentChiTietDonViSD;

@@ -76,20 +76,7 @@ const ContentPhanQuyenUser = () => {
       ),
     },
   ];
-  const actionsPagePPDT = [
-    {
-      linkIcon: (
-        <img
-          src={require("../../../assets/image/action-icon/file-export.png")}
-          width={32}
-          alt="Xuất dữ liệu"
-        />
-      ),
-      title: "Xuất dữ liệu",
-      onClickItem: () => {},
-    },
- 
-  ];
+
 
   const data: DataType[] = [];
   for (let i = 1; i < 50; i++) {

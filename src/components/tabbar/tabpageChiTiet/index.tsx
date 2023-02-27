@@ -43,6 +43,7 @@ const TabPageChiTiet = () => {
   // };
 
   return <Tabs 
+  className="TabBar_Page"
   defaultActiveKey="1" 
   items={items} 
   type= "card" 

@@ -74,7 +74,7 @@ const ContentPageLichsuDoiSoat = () => {
       key: "actionCT",
       render: (_, record) => (
         <Space size="middle">
-          <Link to={`${pathname}/chitiet-doisoatdt/${record.key}}`}>Xem Chi tiết</Link>
+          <Link to={`${pathname}/chitiet-doisoatdt/${record.key}_${record.soHD}`}>Xem Chi tiết</Link>
         </Space>
       ),
     },

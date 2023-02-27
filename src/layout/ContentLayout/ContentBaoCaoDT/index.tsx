@@ -5,6 +5,8 @@ import ContentTitle from "../../../components/common/Content/contentTitle";
 import { Space, Switch } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import CtrBCDoanhThu from "../../ControllerPageLayout/CtrBaoCaoDoanhThu";
+import ChartArea from "../../../components/common/chartArea";
+import { IDataCharts, ItemCharts } from "../../../types";
 
 
 
@@ -116,25 +118,28 @@ const ContentPageBaoCaoDT = () => {
     },
   ];
 
-  const data: DataType[] = [];
-  for (let i = 1; i < 50; i++) {
+  function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+  const data: IDataCharts[] = [];
+  for (let i = 1; i < 30; i++) {
     data.push({
-      key: i,
-      tenTB: "Device A12231",
-      trangThai: i > 2 ? 0 : i,
-      diaDiem: "86/33, Âu Cơ, Phường 9, Tân Bình, TP Hồ Chí Minh",
-      hanHD: "string",
-      macAdress: "123.12.156.10",
-      memory: "0.00GB/32GB",
+      x: i.toString(),
+      y: getRandomInt(9000)
     });
   }
+
+  console.log(data)
+
+
+
   return (
     <div className="Content-App">
       <ContentTitle title="Báo cáo doanh thu" />
       <div className="Content-body">
         <div className="Content-body_PlaylistPage">
           <CtrBCDoanhThu/>
-  
+          <ChartArea data={data}/>
           <ActionsPages dataRender={actionsPageQLTB} />
         </div>
       </div>

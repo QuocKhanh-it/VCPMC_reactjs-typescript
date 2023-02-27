@@ -11,8 +11,17 @@ import { Space, Switch } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import TableSelection from "../../../components/table/tbSelecttions";
 import CtrQLThietBi from "../../ControllerPageLayout/CtrQLThietBi";
+import ModalConfirmDelete from "../../../components/modal/modalConfirmDelete";
 
 const ContentPageQLThietBi = () => {
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+
+  const CancelModalDelete = () => {
+    setOpenModalDelete(false);
+  };
+  const handelOpenModalDelete = () => {
+    setOpenModalDelete(true);
+  };
   const history = useHistory();
   const pathname = history.location.pathname;
   interface DataType {
@@ -104,6 +113,10 @@ const ContentPageQLThietBi = () => {
       key: "memory",
     },
   ];
+  const handleOpenPageCreateTB =()=>{
+    history.push(`${pathname}/add-thietbi`)
+  }
+
   const actionsPageQLTB = [
     {
       linkIcon: (
@@ -114,7 +127,7 @@ const ContentPageQLThietBi = () => {
         />
       ),
       title: "Thêm thiết bị",
-      onClickItem: () => {},
+      onClickItem: handleOpenPageCreateTB,
     },
     {
       linkIcon: (
@@ -148,7 +161,7 @@ const ContentPageQLThietBi = () => {
         />
       ),
       title: "Xoá thiết bị",
-      onClickItem: () => {},
+      onClickItem: handelOpenModalDelete,
     },
   ];
 
@@ -177,6 +190,11 @@ const ContentPageQLThietBi = () => {
             data={data}
           />
           <ActionsPages dataRender={actionsPageQLTB} />
+          <ModalConfirmDelete
+          title="Xóa thiết bị"
+            isOpenModal={openModalDelete}
+            isCancel={CancelModalDelete}
+          />
         </div>
       </div>
     </div>

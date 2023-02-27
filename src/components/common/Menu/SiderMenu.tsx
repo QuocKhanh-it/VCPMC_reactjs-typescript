@@ -119,9 +119,9 @@ const items: MenuItem[] = [
     </>,
     "/support",
     [
-      getItem("Hướng dẫn sử dụng", "/HDSD"),
-      getItem("Tải app", "/dowload-app"),
-      getItem("Feedback", "/feedback"),
+      getItem("Hướng dẫn sử dụng", "/support/HDSD"),
+      getItem("Tải app", "/support/dowload-app"),
+      getItem("Feedback", "/support/feedback"),
     ]
   ),
 

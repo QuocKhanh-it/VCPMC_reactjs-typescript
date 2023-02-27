@@ -36,9 +36,29 @@ const CtrBCDoanhThu = () => {
     
     </div>
     <div className="Control-BCDoanhThu_TitleTable">
-      <h3>Danh sách hợp đồng khai thác đã đối soát</h3>
+      <ul>
+        <li><label>Tổng số bài hát</label>
+          <p>100</p>
+        </li>
+        <li><label>Tổng số lượt phát</label>
+          <p>32.000.000</p>
+        </li>
+        <li><label>Doanh thu trên lượt phát </label>
+          <p>1.564.745.000đ</p>
+        </li>
+        <li><label>Doanh thu chưa phân phối</label>
+          <p>1.564.745.000đ</p>
+        </li>
+        <li><label>Hành chính phí</label>
+          <p>3.253.000đ</p>
+        </li>
+      </ul>
+    </div>
+    <div className="Control-BCDoanhThu_TitleArea">
+      <h3>Biểu đồ theo dõi lượt phát - 29/06/2021</h3>
     </div>
     </>
+
   );
 };
 

@@ -23,7 +23,7 @@ const TabDSUsers = () => {
   const history = useHistory();
   const pathname = history.location.pathname;
   const handleLoadPageCreate = () => {
-    history.push(`${pathname}/createhd`);
+    history.push(`${pathname}/setting_create-user`);
   };
 
   const actionsDSUser = [
@@ -35,7 +35,7 @@ const TabDSUsers = () => {
         />
       ),
       title: "Thêm người dùng",
-      onClickItem: ()=>{},
+      onClickItem: handleLoadPageCreate,
     },
   ];
 
@@ -87,15 +87,15 @@ const TabDSUsers = () => {
     },
     {
       title: "Ngày Hết Hạn",
-      dataIndex: "ngayHenHan",
-      key: "ngayHenHan",
+      dataIndex: "ngayHetHan",
+      key: "ngayHetHan",
     },
  
     {
       key: "actionCT",
       render: (_, record) => (
         <Space size="middle">
-          <Link to={`${pathname}/chitiet-user/${record.key}}`}>Xem Chi tiết</Link>
+          <Link to={`${pathname}/setting_update-user/${record.key}}`}>Chỉnh sửa</Link>
         </Space>
       ),
     },

@@ -60,3 +60,12 @@ export interface IParams {
     nguoiTao: string;
 
   }
+  export interface IDataCharts {
+    x?: string
+    y?: number
+  }
+  
+  
+  export interface ItemCharts {
+    data : Array<IDataCharts>
+  }

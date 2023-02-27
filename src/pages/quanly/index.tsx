@@ -13,25 +13,38 @@ import ContentPageQLDonViSD from "../../layout/ContentLayout/ContentQLDonviSD";
 import ContentPageQLDoitacUQ from "../../layout/ContentLayout/ContentQLDoiTacUQ";
 import ContentPageQLThietBi from "../../layout/ContentLayout/ContentQLThietBi";
 import UpdateDoiTacUQ from "../../layout/ContentLayout/ContentQLDoiTacUQ/updateDoiTacUQ";
+import ContentChiTietDonViSD from "../../layout/ContentLayout/ContentQLDonviSD/ChiTietDVSD";
+import AddUserDVSD from "../../layout/ContentLayout/ContentQLDonviSD/AddUserDVSD";
+import AddThietBi from "../../layout/ContentLayout/ContentQLThietBi/AddThietBi";
 
 const { Content } = Layout;
 
 const QuanLyPage = () => {
-  const { page, control, tag, id }: IParams = useParams();
+  const { page, control, tag, id , action}: IParams = useParams();
 
   const showContent = () => {
-
     switch (`${tag}`) {
+      // hop dong
       case "capnhat-doitac":
         return <UpdateDoiTacUQ />;
       case "chitiethd":
         return <ContentChiTietHD />;
       case "chitiet_hdkt":
         return <ContentChiTietHDKT />;
-        case "createhd":
-          return <ContentCreateHD />;
+      case "createhd":
+        return <ContentCreateHD />;
       case "create_hdkt":
         return <ContentCreateHDKT />;
+        // dvsd
+      case "chitiet-dvsd":
+        return <ContentChiTietDonViSD />;
+        case "dvsd-add_user":
+        return <AddUserDVSD/>;
+        case "dvsd-chitiet_user":
+          return <AddUserDVSD/>;
+          // thiet bi
+          case "add-thietbi":
+            return <AddThietBi/>;
       default:
         switch (`${control}`) {
           case "ql-hopdong":
@@ -43,7 +56,7 @@ const QuanLyPage = () => {
             return <ContentPageQLDoitacUQ />;
 
           case "ql-thietbi":
-            return <ContentPageQLThietBi/>;
+            return <ContentPageQLThietBi />;
 
           default:
             break;
