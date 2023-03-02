@@ -13,95 +13,13 @@ import { IDataCharts, ItemCharts } from "../../../types";
 const ContentPageBaoCaoDT = () => {
   const history = useHistory();
   const pathname = history.location.pathname;
-  interface DataType {
-    key: number;
-    tenTB: string;
-    trangThai: number;
-    diaDiem: string;
-    hanHD: string;
-    macAdress: string;
-    memory: string;
+
+
+  const handelOpenPageBaoCaoCT =()=>{
+    history.push(`${pathname}/chitiet-bcdoanhthu`)
   }
-  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
 
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
 
-  const columns: ColumnsType<DataType> = [
-    {
-      title: "STT",
-      dataIndex: "key",
-      key: "key",
-    },
-    {
-      title: "Tên thiết bị",
-      dataIndex: "tenTB",
-      key: "tenTB",
-    },
-    {
-      key: "actionHuy",
-      render: (_, { trangThai }) => (
-        <>
-          <Space size="middle">
-            <div>
-              {trangThai === 1 ? (
-                <div className="Item-HLuc">
-                  <img
-                    src={require("../../../assets/image/status-icon/Egreen.png")}
-                    alt="hoạt động"
-                  />
-                  <p>Đang kích hoạt | Đang hoạt động </p>
-                </div>
-              ) : trangThai === 2 ? (
-                <div className="Item-HLuc">
-                  <img
-                    src={require("../../../assets/image/status-icon/Ered.png")}
-                    alt="Ngưng kích hoạt"
-                  />
-                  <p>Ngừng kích hoạt</p>
-                </div>
-              ) : (
-                <div className="Item-HLuc">
-                  <img
-                    src={require("../../../assets/image/status-icon/Ered.png")}
-                    alt="Khóa"
-                  />
-                  <p>Đang bị khoá</p>
-                </div>
-              )}
-            </div>
-          </Space>
-        </>
-      ),
-    },
-    {
-      title: "Địa điểm",
-      dataIndex: "diaDiem",
-      key: "diaDiem",
-    },
-
-    {
-      title: "Hạn hợp đồng",
-      dataIndex: "hanHD",
-      key: "hanHD",
-    },
-    {
-      title: "MAC Addresss",
-      dataIndex: "macAdress",
-      key: "macAdress",
-    },
-    {
-      title: "Memory",
-      dataIndex: "memory",
-      key: "memory",
-    },
-  ];
   const actionsPageQLTB = [
 
 
@@ -114,7 +32,7 @@ const ContentPageBaoCaoDT = () => {
         />
       ),
       title: "Báo cáo chi tiết",
-      onClickItem: () => {},
+      onClickItem: handelOpenPageBaoCaoCT ,
     },
   ];
 
@@ -129,7 +47,7 @@ const ContentPageBaoCaoDT = () => {
     });
   }
 
-  console.log(data)
+
 
 
 

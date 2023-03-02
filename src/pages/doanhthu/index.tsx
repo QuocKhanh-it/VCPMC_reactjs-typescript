@@ -3,6 +3,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import SiderMenu from "../../components/common/Menu/SiderMenu";
 import ContentPageBaoCaoDT from "../../layout/ContentLayout/ContentBaoCaoDT";
+import ChiTietBaoCaoDT from "../../layout/ContentLayout/ContentBaoCaoDT/ChiTietBCDT";
+import ChiTietDoanhThu from "../../layout/ContentLayout/ContentBaoCaoDT/ChiTietDoanhThu";
+import LichsuDBTB from "../../layout/ContentLayout/ContentBaoCaoDT/LichsuDBTB";
 import ContentPageLichsuDoiSoat from "../../layout/ContentLayout/ContentLichsuDoiSoat";
 import ChiTietLichSuDoiSoat from "../../layout/ContentLayout/ContentLichsuDoiSoat/ChiTietLichSuDoiSoat";
 import ContentPageKhoBG from "../../layout/ContentLayout/ContentPageKhoBG";
@@ -20,9 +23,14 @@ const BCDoanhThuPages = () => {
     switch (`${tag}`) {
       case "chitiet-doanhThu":
         return <ChiTietPPDoanhThu />;
-
-        case "chitiet-doisoatdt":
-          return <ChiTietLichSuDoiSoat />;
+      case "chitiet-doisoatdt":
+        return <ChiTietLichSuDoiSoat />;
+      case "chitiet-bcdoanhthu":
+        return <ChiTietBaoCaoDT />;
+        case "dt-chitiet_doanhthu":
+          return <ChiTietDoanhThu/>;
+          case "dt-lichsu_dongbotb":
+            return <LichsuDBTB/>;
       default:
         switch (`${control}`) {
           case "phanphoidt":

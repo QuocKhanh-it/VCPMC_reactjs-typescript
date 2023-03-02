@@ -78,6 +78,14 @@ export const breadlink = [
     name: "Chi tiết doanh thu",
   },
   {
+    path: "chitiet-bcdoanhthu",
+    name: "Báo cáo chi tiết",
+  },
+  {
+    path: "dt-chitiet_doanhthu",
+    name: "Báo cáo chi tiết > Chi tiết doanh thu",
+  },
+  {
     path: "playlist",
     name: "Playlist",
   },

@@ -13,6 +13,9 @@
     }
   }
 }
+.ant-spin-nested-loading {
+  height: 100% !important;
+}
 .ant-spin-container {
   width: 100% !important;
   height: 100% !important;
@@ -53,7 +56,7 @@
     }
     tbody {
       .ant-table-cell {
-        height: 47px !important;
+        height: 48px !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         border-bottom: 1px solid #727288 !important;

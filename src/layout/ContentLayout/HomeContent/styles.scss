@@ -1,4 +1,3 @@
-
 .Content-body {
   position: relative;
   display: flex;
@@ -53,6 +52,9 @@
       background-color: #2b2b3f;
       border: 1px solid #727288;
     }
+    input:disabled {
+      border: none;
+    }
   }
   .ant-picker {
     width: 274px;
@@ -64,17 +66,24 @@
       border-radius: 8px;
       font-size: 18px;
       color: white;
-     
     }
+    input:disabled {
+      color: #f5f5ff !important;
+    }
+    
     .ant-picker-suffix {
-        color: #FF7506 !important;
-        svg{
-            width: 24px;
-        }
+      color: #ff7506 !important;
+      svg {
+        width: 24px;
+      }
     }
   }
+  .ant-picker-disabled {
+    border: none !important;
+    background-color: #3e3e50;
+  }
 }
-.btn-group{
+.btn-group {
   margin-top: 112px;
   display: flex;
   justify-content: center;
@@ -86,7 +95,6 @@
   color: white;
   background-color: #3e3e50;
   border-color: #d9d9d9;
-  
 }
 
 .Icon-Camera {

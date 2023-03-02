@@ -12,7 +12,7 @@ import { Interface } from "readline";
 const TableDefault: React.FC<{
   title?: string;
   columns: ColumnsType<any>;
-  data: any[];
+  data?: any[];
   sizeTb?: number;
   pagesize?: number;
   heightTb?: number;

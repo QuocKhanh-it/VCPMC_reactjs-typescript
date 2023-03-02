@@ -5,20 +5,14 @@ import { Link, useHistory } from "react-router-dom";
 import ActionsPages from "../../../components/actionpages/ActionPages";
 import ModalLyDoHuyHD from "../../../components/modal/modalLyDoHuyHD";
 import TableDefault from "../../../components/table/tbdefault";
+import { useAppSelector } from "../../../redux/hooks";
+import { DataTypeHDUyQuyen } from "../../../types";
 import CtrQLDSHopDong from "../../ControllerPageLayout/CtrQLDSHopDong";
 import "./styles.scss";
 
-interface DataType {
-  key: number;
-  soHD: string;
-  nameHD: string;
-  nguoiUyQuyen: string;
-  quyenSH: string;
-  hieuLuc: number;
-  ngayTao: string;
-  lydoHuy: string;
-}
+
 const TabHDUyQuyen = () => {
+  const { dataHDUyQuyen } = useAppSelector(state=>state.hopDong)
   const [openModalLDH, SetopenModalLDH] = useState(false);
   const [valueModal, setValueModal] = useState({ soHD: "", lydoHuy: "" });
   const CancelModal = () => {
@@ -48,7 +42,7 @@ const TabHDUyQuyen = () => {
     },
   ];
 
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<DataTypeHDUyQuyen> = [
     {
       title: "STT",
       dataIndex: "key",
@@ -129,7 +123,7 @@ const TabHDUyQuyen = () => {
       key: "actionHuy",
       render: (_, { hieuLuc , soHD , lydoHuy}) => (
         <>
-          {hieuLuc === 0 ? (
+          {lydoHuy && hieuLuc === 0 ? (
             <Space size="middle"onClick={()=>OpenModalLyDoHuy({soHD, lydoHuy})} >
               <div>
               <a 
@@ -144,25 +138,25 @@ const TabHDUyQuyen = () => {
       ),
     },
   ];
-  const data: DataType[] = [];
-  for (let i = 1; i < 50; i++) {
-    data.push({
-      key: i,
-      soHD: "HD123" + i,
-      nameHD: "Hợp đồng uỷ quyền bài hát",
-      nguoiUyQuyen: "Vương Anh Tú",
-      quyenSH: "Người biểu diễn",
-      hieuLuc: i > 3 ? 0 : i,
-      ngayTao: " 01/04/2021 15:53:13",
-      lydoHuy: i > 3 ? "Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn." : ""
-    });
-  }
+  // const data: DataTypeHDUyQuyen[] = [];
+  // for (let i = 1; i < 50; i++) {
+  //   data.push({
+  //     key: i,
+  //     soHD: "HD123" + i,
+  //     nameHD: "Hợp đồng uỷ quyền bài hát",
+  //     nguoiUyQuyen: "Vương Anh Tú",
+  //     quyenSH: "Người biểu diễn",
+  //     hieuLuc: i > 3 ? 0 : i,
+  //     ngayTao: " 01/04/2021 15:53:13",
+  //     lydoHuy: i > 3 ? "Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn." : ""
+  //   });
+  // }
 
   return (
     <div className="TabHD-UyQuyen">
       <CtrQLDSHopDong />
 
-      <TableDefault columns={columns} data={data}/>
+      <TableDefault columns={columns} data={dataHDUyQuyen} heightTb={665}/>
       {/* <TableDSHopDong handleOpenMDLDH={OpenModalLyDOHuy} /> */}
       <ActionsPages dataRender={actionsDSHD} />
 

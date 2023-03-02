@@ -1,31 +1,36 @@
 import { createSlice , PayloadAction } from "@reduxjs/toolkit"
-import { IProfile } from '../../types'
+import { ICurrentUSer } from '../../types'
 
 export interface AuthState {
-    currentUser? : IProfile[]
-    userList?:  IProfile[]
+    currentUser : ICurrentUSer[]
+    loading : boolean
     // loading: boolean
 }
 
 const initialState : AuthState = {
-    currentUser: undefined,
-    userList: [],
-    // loading : false,
+    currentUser: [],
+    loading : false
+
 }   
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        addUser: ( state , action) => {
+        addInfoCurrentUser: ( state , action) => {
             state.currentUser = action.payload
+            state.loading = true
+        
         },
-        addListUser: ( state , action) => {
-            state.userList = action.payload
-        }
+        userSingout:( state , action) => {
+            state.currentUser = []
+            state.loading = false
+        
+        },
+        
     }
 })
 
-export const { addUser , addListUser} = authSlice.actions
+export const { addInfoCurrentUser} = authSlice.actions
 export default  authSlice.reducer
 

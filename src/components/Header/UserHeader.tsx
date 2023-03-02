@@ -1,27 +1,29 @@
 import { Avatar } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 
 const UserHeader = () => {
-  return (
-    <Link to={"/home"}>
-    <div className="User-header">
-     
+  const { currentUser } = useAppSelector((state) => state.auth);
+
+  const renderPage = currentUser.map((it, index) => {
+    const nameshort = it.name
+      .slice(0, 2)
+      .concat(".")
+      .concat(it.name.slice(it.name.lastIndexOf(" ")));
+    return (
+      <div className="User-header">
         <div className="User-header_avartar">
-          <Avatar
-            size={40}
-            icon={<img src={require("../../assets/image/Frame433.png")} />}
-          />
+          <Avatar size={40} icon={<img src={it.avatar} alt="images" />} />
         </div>
         <div className="User-header_GroupName">
-          <p className="User-header_GroupName-name">Ng.Tuyết</p>
-          <p className="User-header_GroupName-role">Admin</p>
-
+          <p className="User-header_GroupName-name">{nameshort}</p>
+          <p className="User-header_GroupName-role">{it.role}</p>
         </div>
-
-    </div>
-    </Link>
-  );
+      </div>
+    );
+  });
+  return <Link to={"/home"}>{renderPage}</Link>;
 };
 
 export default UserHeader;

@@ -20,15 +20,14 @@ export interface IParams {
     ngayTai: string;
     status: number;
   }
-  export interface IProfile {
-    email: string
-    id: string
-    name: string
-    password: string
-    phone: string
-    role: string
-    username: string
-    avatar: string
+  export interface ICurrentUSer {
+    id:string
+    name : string
+    ngaySinh?:string
+    email?:string
+    phone?: string
+    role?: string
+    avatar?:string
   }
   export interface ISelect {
     title?: string 
@@ -69,3 +68,23 @@ export interface IParams {
   export interface ItemCharts {
     data : Array<IDataCharts>
   }
+
+export interface DataTypeHDUyQuyen {
+  key: number;
+  soHD: string;
+  nameHD: string;
+  nguoiUyQuyen: string;
+  quyenSH: string;
+  hieuLuc: number;
+  ngayTao: string;
+  lydoHuy?: string;
+}
+export interface DataTypeHDKhaiThac {
+  key: number;
+  soHD: string;
+  khachHang: string;
+  ngayTao: string;
+  ngayHieuluc: string;
+  ngayHetHan: string;
+  hieuLuc: number;
+}
