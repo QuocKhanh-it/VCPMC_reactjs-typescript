@@ -1,15 +1,35 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Form, Input } from "antd";
+import { Form } from "antd";
+
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import ActionsPages from "../../../components/actionpages/ActionPages";
 import ModalActionHuy from "../../../components/modal/modalActionhuy";
 import ModalGiaHanHD from "../../../components/modal/modalGiaHanHD";
+
+import { useAppSelector } from "../../../redux/hooks";
+import { IParams } from "../../../types";
 import "./styles.scss";
 
 const TabThongTinHD = () => {
+ 
   const [openActionHuyHD, setActionHuyHD] = useState(false);
   const [openActionGHHD, setOpenModalGiaHan] = useState(false);
-  
+
+  const {dataHDUyQuyen} = useAppSelector(state => state.hopDong)
+  console.log(dataHDUyQuyen)
+  const { id }: IParams = useParams();
+  const keyParam = id?.slice(0, id.indexOf("_"));
+
+  const curentdata = dataHDUyQuyen?.find((it: any) => {
+    if (keyParam) {
+      return `${it.key}` === keyParam;
+    }
+  });
+console.log(curentdata)
+
+ 
+
   const handelModalHuyOpen = () => {
     setActionHuyHD(true);
   };
@@ -23,24 +43,23 @@ const TabThongTinHD = () => {
     setOpenModalGiaHan(false);
   };
 
-
   const actionsChiTiet = [
     {
       linkIcon: (
         <img
-        src={require("../../../assets/image/action-icon/fi_edit.png")}
-        width={32}
-      />
+          src={require("../../../assets/image/action-icon/fi_edit.png")}
+          width={32}
+        />
       ),
       title: "Chỉnh sửa hợp đồng ",
-       onClickItem: ()=>{}
+      onClickItem: () => {},
     },
     {
       linkIcon: (
         <img
-        src={require("../../../assets/image/action-icon/notes.png")}
-        width={32}
-      />
+          src={require("../../../assets/image/action-icon/notes.png")}
+          width={32}
+        />
       ),
       title: "Gia hạn hợp đồng ",
       onClickItem: handelOpenModalGH,
@@ -48,20 +67,14 @@ const TabThongTinHD = () => {
     {
       linkIcon: (
         <img
-        src={require("../../../assets/image/action-icon/fi_x.png")}
-        width={32}
-      />
+          src={require("../../../assets/image/action-icon/fi_x.png")}
+          width={32}
+        />
       ),
       title: "Hủy hợp đồng ",
       onClickItem: handelModalHuyOpen,
     },
-    
   ];
-
-
-
-
-  
 
   return (
     <div className="TabThongTinHD">
@@ -69,54 +82,48 @@ const TabThongTinHD = () => {
         <div className="TabThongTinHD_Form_InfoHD">
           <Form className="Form_InfoHD">
             <Form.Item label="Số hợp đồng:">
-              <span>BH123</span>
+              <span>{curentdata?.soHD}</span>
             </Form.Item>
             <Form.Item label="Tên hợp đồng:">
-              <span>Hợp đồng uỷ quyền tác phẩm âm nhạc</span>
+              <span>{curentdata?.nameHD}</span>
             </Form.Item>
             <Form.Item label="Ngày hiệu lực:">
-              <span>01/05/2021</span>
+              <span>{curentdata?.ngayHieuLuc}</span>
             </Form.Item>
             <Form.Item label="Ngày hết hạn:">
-              <span>01/12/2021</span>
+              <span>{curentdata?.ngayHH}</span>
             </Form.Item>
 
             <Form.Item label="Tình trạng:">
-              <div className="Item-HLuc">
-                <img
-                  src={require("../../../assets/image/status-icon/Egreen.png")}
-                />
-                <p>Mới</p>
-              </div>
-              {/* {hieuLuc === 1 ? (
-            <div className="Item-HLuc">
-              <img
-                src={require("../../../assets/image/status-icon/Egreen.png")}
-              />
-              <p>Mới</p>
-            </div>
-          ) : hieuLuc === 2 ? (
-            <div className="Item-HLuc">
-              <img
-                src={require("../../../assets/image/status-icon/Eblue.png")}
-              />
-              <p>Còn thời hạn</p>
-            </div>
-          ) : hieuLuc === 3 ? (
-            <div className="Item-HLuc">
-              <img
-                src={require("../../../assets/image/status-icon/ENot.png")}
-              />
-              <p>Đã hết hạn</p>
-            </div>
-          ) : (
-            <div className="Item-HLuc">
-              <img
-                src={require("../../../assets/image/status-icon/Ered.png")}
-              />
-              <p>Đã hủy</p>
-            </div>
-          )} */}
+              {curentdata?.hieuLuc === 1 ? (
+                <div className="Item-HLuc">
+                  <img
+                    src={require("../../../assets/image/status-icon/Egreen.png")}
+                  />
+                  <p>Mới</p>
+                </div>
+              ) : curentdata?.hieuLuc === 2 ? (
+                <div className="Item-HLuc">
+                  <img
+                    src={require("../../../assets/image/status-icon/Eblue.png")}
+                  />
+                  <p>Còn thời hạn</p>
+                </div>
+              ) : curentdata?.hieuLuc === 3 ? (
+                <div className="Item-HLuc">
+                  <img
+                    src={require("../../../assets/image/status-icon/ENot.png")}
+                  />
+                  <p>Đã hết hạn</p>
+                </div>
+              ) : (
+                <div className="Item-HLuc">
+                  <img
+                    src={require("../../../assets/image/status-icon/Ered.png")}
+                  />
+                  <p>Đã hủy</p>
+                </div>
+              )}
             </Form.Item>
           </Form>
         </div>
@@ -192,63 +199,60 @@ const TabThongTinHD = () => {
               </div>
             </div>
             <Form.Item label="Pháp nhân uỷ quyền:">
-              <span>Cá nhân</span>
+              <span>{curentdata?.infoUQ.pNUQ}</span>
             </Form.Item>
             <Form.Item label="Tên người uỷ quyền:">
-              <span>Nguyễn Văn A</span>
+              <span>{curentdata?.infoUQ.nguoiUyQuyen}</span>
             </Form.Item>
             <Form.Item label="Ngày sinh:">
-              <span>10/01/1984</span>
+              <span>{curentdata?.infoUQ.ngaySinh}</span>
             </Form.Item>
             <Form.Item label="Giới tính:">
-              <span>Nam</span>
+              <span>{curentdata?.infoUQ.gioiTinh}</span>
             </Form.Item>
             <Form.Item label="Quốc tịch:">
-              <span>Việt Nam</span>
+              <span>{curentdata?.infoUQ.quocTich}</span>
             </Form.Item>
             <Form.Item label="Số điện thoại::">
-              <span>(+84) 345 678 901</span>
+              <span>{curentdata?.infoUQ.sdt}</span>
             </Form.Item>
           </Form>
         </div>
         <div className="TabThongTinHD_Form-CaNhan">
           <Form className="Form-CaNhan">
             <Form.Item label="Số CMND/ CCCD:">
-              <span>123456789012</span>
+              <span>{curentdata?.infoUQ.CCCD}</span>
             </Form.Item>
             <Form.Item label="Ngày cấp:">
-              <span>10/07/2011</span>
+              <span>{curentdata?.infoUQ.ngayCap}</span>
             </Form.Item>
             <Form.Item label="Nơi cấp: ">
-              <span>Tp.HCM, Việt Nam</span>
+              <span>{curentdata?.infoUQ.noiCap}</span>
             </Form.Item>
             <Form.Item label="Mã số thuế:">
-              <span>92387489</span>
+              <span>{curentdata?.infoUQ.maSoThue}</span>
             </Form.Item>
             <Form.Item label="Nơi cư trú:">
-              <span>
-                69/53, Nguyễn Gia Trí, Phường 25, Quận Bình Thạnh, Thành phố Hồ
-                Chí Minh
-              </span>
+              <span>{curentdata?.infoUQ.diaChi}</span>
             </Form.Item>
           </Form>
         </div>
         <div className="TabThongTinHD_Form-CaNhan">
           <Form className="Form-CaNhan">
             <Form.Item label="Email:">
-              <span>nguyenvana@gmail.com</span>
+              <span>{curentdata?.infoUQ.email}</span>
             </Form.Item>
             <Form.Item label="Tài khoản đăng nhập:">
-              <span>1nguyenvana@gmail.com</span>
+              <span>{curentdata?.infoUQ.taiKhoan}</span>
             </Form.Item>
             <Form.Item label="Mật khẩu: ">
-              <span>**********</span>
+              <span>{curentdata?.infoUQ.matKhau}</span>
             </Form.Item>
             <Form.Item label="Số tài khoản:">
-              <span>1231123312211223</span>
+              <span>{curentdata?.infoUQ.stk}</span>
             </Form.Item>
             <Form.Item label="Ngân hàng:">
-              <span>ACB - Ngân hàng Á Châu</span>
+              <span>{curentdata?.infoUQ.nganHang}</span>
             </Form.Item>
           </Form>
         </div>

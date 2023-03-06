@@ -34,6 +34,7 @@ export interface IParams {
     w? : number
     data? : Array<{value: string, label: string}>
     placeholder? : string
+    onValue?: Function
   }
 
   interface DataTypeKhobG {
@@ -77,7 +78,27 @@ export interface DataTypeHDUyQuyen {
   quyenSH: string;
   hieuLuc: number;
   ngayTao: string;
+  ngayHieuLuc: string;
+  ngayHH: string;
   lydoHuy?: string;
+  infoUQ: {
+    pNUQ : string;
+    nguoiUyQuyen : string;
+    gioiTinh : string;
+    ngaySinh : string;
+    quocTich : string;
+    sdt : string; 
+    CCCD : string; 
+    ngayCap : string; 
+    noiCap : string; 
+    maSoThue : string; 
+    diaChi : string; 
+    email : string;
+     taiKhoan : string;
+     matKhau : string;
+     stk : string;
+     nganHang: string;
+  }
 }
 export interface DataTypeHDKhaiThac {
   key: number;

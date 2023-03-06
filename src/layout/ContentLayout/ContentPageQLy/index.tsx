@@ -7,6 +7,9 @@ import { db } from "../../../firebase/cofig";
 import { useAppDispatch } from "../../../redux/hooks";
 import { addItemsHDKhaiThac, addItemsHDUyQuyen } from "../../../redux/slice/HopDongSlice";
 
+function compareNumbers(a :any, b : any) {
+  return a.key - b.key;
+}
 const ContentPageQLy = () => {
 
   const dispatch = useAppDispatch()
@@ -16,9 +19,12 @@ const ContentPageQLy = () => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      data.push({ index: `${doc.id}`, ...doc.data() });
+      data.push({ index: `${doc.id}`, ...doc.data()});
+      
     });
+    data.sort(compareNumbers)
     dispatch(addItemsHDUyQuyen(data));
+
   };
   const fectchValueHDKhaiThac = async () => {
     const q = query(collection(db, "HopDongKhaiThac"));
@@ -28,6 +34,7 @@ const ContentPageQLy = () => {
       // doc.data() is never undefined for query doc snapshots
       data.push({ index: `${doc.id}`, ...doc.data() });
     });
+    data.sort(compareNumbers)
     dispatch(addItemsHDKhaiThac(data));
   };
   useEffect(()=>{

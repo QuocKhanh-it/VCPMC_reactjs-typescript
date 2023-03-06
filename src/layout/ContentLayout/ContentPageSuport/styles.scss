@@ -151,13 +151,20 @@
       border-radius: 16px;
     }
     .ant-segmented-group {
-      flex-direction: column;
-      width: 571px;
-      height: 834px;
+      // flex-direction: column;
 
       background: #2b2b3f;
       border-radius: 16px;
+      .label.ant-segmented-item {
+        width: 555px;
+        height: 80px !important;
+      }
+      .ant-segmented-item-label {
+        height: 80px !important;
+      }
     }
+
+ 
     .User_FeedBack {
       display: flex;
       &-Info {
@@ -178,7 +185,6 @@
             white-space: nowrap;
             text-overflow: ellipsis;
           }
-        
         }
       }
     }

@@ -9,8 +9,6 @@ import {
   Select,
 } from "antd";
 import React, { useState } from "react";
-import ModalActionHuyHD from "../../modal/modalActionhuy";
-import ModalGiaHanHD from "../../../components/modal/modalGiaHanHD";
 import "./styles.scss";
 import dayjs from "dayjs";
 import UploadFile from "../../control/uploadFile";
@@ -45,14 +43,14 @@ const FormCreateHD = () => {
   // ca nhan
   const [nguoiUyQuyen, setNguoiUyQuyen] = useState("Nguyễn Bảo Nam");
   const [gioiTinh, setGioiTinh] = useState("Nam");
-  const [ngaySinh, SetngaySinh] = useState("16/9/2000");
+  const [ngaySinh, SetngaySinh] = useState("16/09/2000");
   const [quocTich, SetQuocTich] = useState("Việt Nam");
   const [sdt, SetSDT] = useState("014164512");
   const [CCCD, SetCCCD] = useState("1641145215");
   const [ngayCap, SetngayCap] = useState("15/12/2015");
   const [noiCap, SetnoiCap] = useState("TP.HCM");
   const [maSoThue, SetmaSoThue] = useState("031156463102311");
-  const [diaChi, SetdiaChi] = useState("Gò Vấp TPHCM");
+  const [diaChi, SetdiaChi] = useState("Gò Vấp, TPHCM");
   const [email, Setemail] = useState("nam@gmail.com");
   const [taiKhoan, SettaiKhoan] = useState("nam@gmail.com");
   const [matKhau, SetmatKhau] = useState("012345678");
@@ -60,10 +58,10 @@ const FormCreateHD = () => {
   const [nganHang, SetNganHang] = useState("Agribank");
 
   // To chuc
-  const [diaChiTC, SetDiaChiTC] = useState("");
+  const [diaChiTC, SetDiaChiTC] = useState("Gò Vấp, TPHCM");
 
   const handelCreateHD = () => {
-    let key = dataHDUyQuyen && dataHDUyQuyen?.length + 1;
+    let key = dataHDUyQuyen ?  dataHDUyQuyen?.length + 1 : 1 ;
     console.log(key)
     var currentdate = new Date();
     var datetime =
@@ -86,6 +84,26 @@ const FormCreateHD = () => {
       quyenSH: "Người biểu diễn",
       hieuLuc: 1,
       ngayTao: datetime,
+      ngayHieuLuc,
+      ngayHH,
+      infoUQ: {
+        pNUQ : checkPNUQ ===0 ? "Cá nhân" : "Tổ chức",
+        nguoiUyQuyen,
+        gioiTinh,
+        ngaySinh,
+        quocTich,
+        sdt, 
+        CCCD, 
+        ngayCap, 
+        noiCap, 
+        maSoThue, 
+        diaChi, 
+        email,
+         taiKhoan,
+         matKhau,
+         stk,
+         nganHang
+      }
      
     };
     const isEmty = Object.values(dataUpload).includes('')
@@ -224,7 +242,7 @@ const FormCreateHD = () => {
               </Form.Item>
               <Form.Item
                 label="Tên người uỷ quyền:"
-                initialValue={nguoiUyQuyen}
+                
               >
                 <Input
                   type="text"
@@ -295,7 +313,7 @@ const FormCreateHD = () => {
                   onChange={(e) => SetnoiCap(e.target.value)}
                 />
               </Form.Item>
-              <Form.Item label="Mã số thuế:" initialValue={maSoThue}>
+              <Form.Item label="Mã số thuế:" >
                 <Input
                   type="text"
                   name="msThue"
@@ -374,17 +392,19 @@ const FormCreateHD = () => {
                 </Radio.Group>
               </Form.Item>
 
-              <Form.Item label="Mã số thuế:" initialValue={maSoThue}>
+              <Form.Item label="Mã số thuế:" name={"msThue"} initialValue={maSoThue}>
                 <Input
                   type="text"
                   name="msThue"
-                  onChange={(e) => SetmaSoThue(e.target.value)}
+                  defaultValue={maSoThue}
+                  onChange={e => SetmaSoThue(e.target.value)}
                 />
               </Form.Item>
               <Form.Item label="Số tài khoản:" initialValue={stk}>
                 <Input
                   type="text"
                   name="stk"
+                  defaultValue={stk}
                   onChange={(e) => Setstk(e.target.value)}
                 />
               </Form.Item>
@@ -392,6 +412,7 @@ const FormCreateHD = () => {
                 <Input
                   type="text"
                   name="bank"
+                  defaultValue={nganHang}
                   onChange={(e) => SetNganHang(e.target.value)}
                 />
               </Form.Item>
@@ -399,6 +420,7 @@ const FormCreateHD = () => {
                 <Input.TextArea
                   name="DiaChiToChuc"
                   rows={6}
+                  defaultValue={diaChiTC}
                   onChange={(e) => SetDiaChiTC(e.target.value)}
                 />
               </Form.Item>
@@ -406,11 +428,12 @@ const FormCreateHD = () => {
           </div>
           <div className="CreateHD_Form-CaNhan">
             <Form className="Form-CaNhan">
-              <Form.Item label="Người đại diện:" initialValue={nguoiUyQuyen}>
+              <Form.Item label="Người đại diện:" name={"nguoiUyQuyen"}>
                 <Input
                   type="text"
-                  name="nguoiDaiDien"
-                  onChange={(e) => e.target.value}
+                  name="nguoiUyQuyen"
+                  defaultValue={nguoiUyQuyen}
+                  onChange={(e) => setNguoiUyQuyen(e.target.value)}
                 />
               </Form.Item>
 
@@ -450,6 +473,7 @@ const FormCreateHD = () => {
                 <Input
                   type="text"
                   name="noicap"
+                  defaultValue={noiCap}
                   onChange={(e) => SetnoiCap(e.target.value)}
                 />
               </Form.Item>
@@ -470,6 +494,7 @@ const FormCreateHD = () => {
                 <Input.TextArea
                   name="diaChi"
                   rows={4}
+                  defaultValue={diaChi}
                   onChange={(e) => SetdiaChi(e.target.value)}
                 />
               </Form.Item>

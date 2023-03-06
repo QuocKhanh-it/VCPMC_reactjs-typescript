@@ -112,6 +112,11 @@ const TabHDUyQuyen = () => {
       ),
     },
     {
+      title: "Ngày Tạo",
+      dataIndex: "ngayTao",
+      key: "ngayTao",
+    },
+    {
       key: "actionCT",
       render: (_, record) => (
         <Space size="middle">
